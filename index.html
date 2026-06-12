@@ -1,0 +1,349 @@
+
+<div id="container">
+    <!-- The header in the background -->
+    <div id="header"></div>
+    
+    <!-- The navbar wrapper that becomes sticky -->
+    <div id="headerArea">
+        <nav id="navbar">
+            <ul>
+                <li><a href="#"><img src="images/home_button.png" alt="Home"></a></li>
+                <li><a href="#"><img src="images/MyFilms_button.PNG" alt="My Films"></a></li>
+                <li><a href="#"><img src="images/Portfolio_button.PNG" alt="Portfolio"></a></li>
+                <li><a href="#"><img src="images/LifeDrawings_button.PNG" alt="Life Drawings"></a></li>
+                <li><a href="#"><img src="images/Experience_button.PNG" alt="Experience"></a></li>
+                <li><a href="#"><img src="images/Contact_button.PNG" alt="Contact"></a></li>
+            </ul>
+        </nav>
+    </div>
+    
+    <div id="flex">
+        <!-- Main body -->
+        <main>
+            <h1>Evgenia Shastina</h1>
+            <h2>Animation Showreel</h2>
+            <!-- Video Container -->
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube-nocookie.com/embed/Uxsc5-4vQyE?si=sQcTFtBdv7Q4F2e9" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            
+            <!-- Video Info / Direct Link -->
+            <div class="video-info">
+                <p>If the video player doesn't display correctly, you can watch it directly here: 
+                    <br>
+                    <a href="https://youtu.be/Uxsc5-4vQyE?si=O2xMfCVcUNZhagKD" target="_blank" rel="noopener noreferrer">Watch on YouTube →</a>
+                </p>
+            </div>
+        </main>
+        
+        <aside id="leftSidebar">
+            <h2>Updates</h2>
+            <div class="box">
+                <p>I have recently updated this tool as of August 2022!</p>
+                <ul style="padding-left:10px;">
+                    <li>Rewrote the JS to generate cleaner code</li>
+                    <li>Rewrote the CSS in a way that hopefully makes much more sense to edit</li>
+                    <li>Added a couple of new features!</li>
+                    <li>Old version is still available <a href="old.html" target="_blank">here</a></li>
+                </ul>
+            </div>
+            <h2>Hi there!</h2>
+            <h3>Other Tools</h3>
+            <ul>
+                <li><a href="https://sadgrlonline.github.io/html-cheatsheet/" target="_blank">HTML Cheatsheet</a></li>
+                <li><a href="webmastery/webmaster-links.html" target="_blank">Webmaster Links</a></li>
+                <li><a href="webmastery/downloads/tiledbgs.html" target="_blank">Tiled BGs</a></li>
+                <li><a href="webmastery/downloads/fonts.html" target="_blank">Fonts</a></li>
+                <li><a href="projects/ideas/" target="_blank">Site Ideas</a></li>
+            </ul>
+        </aside>
+    </div>
+    <footer id="footer">CC0 Public Domain, 2022</footer>
+</div>
+
+<!-- JavaScript to dynamically blur the background image as you scroll -->
+<script>
+    window.addEventListener('scroll', function() {
+        const scrollY = window.scrollY;
+        const header = document.getElementById('header');
+        
+        // Calculates blur (max 10px blur when scrolled 250px)
+        const blurValue = Math.min(scrollY / 25, 10);
+        // Scales the image slightly to prevent ugly white edges from the blur
+        const scaleValue = 1 + (blurValue / 200); 
+
+        // Set the CSS variables dynamically
+        header.style.setProperty('--blur-amount', blurValue + 'px');
+        header.style.setProperty('--scale-amount', scaleValue);
+    });
+</script>
+
+<!-- THIS IS THE CSS !-->
+<style>
+    :root {
+        /* Change this URL to your own header image path */
+        --header-image: url('images/header.PNG');
+        --body-bg-image: url('https://sadhost.neocities.org/images/tiles/purplesky.gif');
+        --content: #43256E;
+    }
+
+    @font-face {
+        font-family: Nunito;
+        src: url('https://sadhost.neocities.org/fonts/Nunito-Regular.ttf');
+    }
+
+    @font-face {
+        font-family: Nunito;
+        src: url('https://sadhost.neocities.org/fonts/Nunito-Bold.ttf');
+        font-weight: bold;
+    }
+
+    @font-face {
+        font-family: Nunito;
+        src: url('https://sadhost.neocities.org/fonts/Nunito-Italic.ttf');
+        font-style: italic;
+    }
+
+    @font-face {
+        font-family: Nunito;
+        src: url('https://sadhost.neocities.org/fonts/Nunito-BoldItalic.ttf');
+        font-style: italic;
+        font-weight: bold;
+    }
+
+    body {
+        font-family: 'Nunito', sans-serif;
+        margin: 0;
+        background-color: #f7f5ff;
+        background-size: 65px;
+        color: #fceaff;
+        background-image: var(--body-bg-image);
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    #container {
+        width: 100%;
+        margin: 0;
+    }
+
+    #container a {
+        color: #fee7ff;
+        font-weight: bold;
+    }
+
+    /* Fixed behind all other content */
+    #header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 250px; 
+        z-index: 1; /* Layer behind main content */
+        overflow: hidden; 
+    }
+
+    #header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ffffff;
+        background-image: var(--header-image);
+        background-size: cover;
+        background-position: center;
+        z-index: -1;
+        /* Dynamic blur and scale (updated by JS on scroll) */
+        filter: blur(var(--blur-amount, 0px));
+        transform: scale(var(--scale-amount, 1));
+        will-change: filter, transform;
+    }
+
+    /* Sticky container for the navbar */
+    #headerArea {
+        position: sticky;
+        top: 0;
+        z-index: 1000; /* Stays above everything */
+        margin-top: 250px; /* Pushes content down so header is visible at start */
+    }
+
+    #navbar {
+        height: 50px;
+        background-color: #ffffff;
+        width: 100%;
+    }
+
+    #navbar ul {
+        display: flex;
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 100%;
+    }
+
+    #navbar li {
+        padding-top: 0;
+    }
+
+    #navbar li a {
+        color: #ffffff;
+        font-weight: 800;
+        text-decoration: none;
+    }
+
+    #navbar li a:hover {
+        color: #ffffff;
+        text-decoration: underline;
+    }
+
+    #navbar li a img {
+        display: block;
+        border: none;
+        max-height: 32px; 
+    }
+
+    /* Relative with a higher z-index to slide OVER the fixed header */
+    #flex {
+        display: flex;
+        position: relative;
+        z-index: 2; 
+    }
+
+    aside {
+        background-color: #241445;
+        width: 200px;
+        padding: 20px;
+        font-size: smaller;
+    }
+
+    #leftSidebar {
+        order: 1;
+    }
+
+    #rightSidebar {
+        order: 3;
+    }
+
+    footer {
+        position: relative;
+        z-index: 2; /* Keeps footer over the header */
+        background-color: #ffffff;
+        width: 100%;
+        height: 40px;
+        padding: 10px;
+        text-align: center;
+    }
+
+    h1, h2, h3 {
+        color: #ED64F5;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    strong {
+        color: #fff8ff;
+    }
+
+    .box {
+        background-color: #13092D;
+        border: 1px solid #ED64F5;
+        padding: 10px;
+    }
+
+    #topBar {
+        width: 100%;
+        height: 30px;
+        padding: 10px;
+        font-size: smaller;
+        background-color: #13092D;
+    }
+
+    main {
+        background-color: #ffffff;
+        flex: 1;
+        padding: 40px 20px;
+        order: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .video-container {
+        position: relative;
+        width: 95%; 
+        max-width: 1000px; 
+        aspect-ratio: 16 / 9;
+        margin: 20px auto; 
+        border-radius: 12px;
+        overflow: hidden;
+        border: 2px solid #ED64F5;
+        box-shadow: 0 8px 30px rgba(237, 100, 245, 0.45);
+        background-color: #000;
+    }
+
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .video-info {
+        background-color: #13092D;
+        border: 1px solid #ED64F5;
+        padding: 15px;
+        border-radius: 6px;
+        margin-top: 15px;
+        font-size: 0.9em;
+        line-height: 1.6;
+        width: 95%;
+        max-width: 1000px;
+    }
+
+    .video-info a {
+        display: inline-block;
+        margin-top: 5px;
+    }
+
+    @media only screen and (max-width: 800px) {
+        #flex {
+            flex-wrap: wrap;
+        }
+
+        aside {
+            width: 100%;
+        }
+
+        main {
+            order: 1;
+        }
+
+        #leftSidebar {
+            order: 2;
+        }
+
+        #rightSidebar {
+            order: 3;
+        }
+
+        #navbar ul {
+            flex-wrap: wrap;
+        }
+    }
+</style>
