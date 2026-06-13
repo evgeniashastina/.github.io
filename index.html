@@ -1,4 +1,3 @@
-
 <div id="container">
     <!-- The header in the background -->
     <div id="header"></div>
@@ -22,6 +21,7 @@
         <main>
             <h1>Evgenia Shastina</h1>
             <h2>Animation Showreel</h2>
+            
             <!-- Video Container -->
             <div class="video-container">
                 <iframe 
@@ -40,8 +40,31 @@
                     <a href="https://youtu.be/Uxsc5-4vQyE?si=O2xMfCVcUNZhagKD" target="_blank" rel="noopener noreferrer">Watch on YouTube →</a>
                 </p>
             </div>
+            <!-- NEW: Copy of sidebar content for mobile screens only -->
+            <div id="mobile-sidebar-content">
+                <h2>Updates</h2>
+                <div class="box">
+                    <p>I have recently updated this tool as of August 2022!</p>
+                    <ul style="padding-left:10px;">
+                        <li>Rewrote the JS to generate cleaner code</li>
+                        <li>Rewrote the CSS in a way that hopefully makes much more sense to edit</li>
+                        <li>Added a couple of new features!</li>
+                        <li>Old version is still available <a href="old.html" target="_blank">here</a></li>
+                    </ul>
+                </div>
+                <h2>Hi there!</h2>
+                <h3>Other Tools</h3>
+                <ul>
+                    <li><a href="https://sadgrlonline.github.io/html-cheatsheet/" target="_blank">HTML Cheatsheet</a></li>
+                    <li><a href="webmastery/webmaster-links.html" target="_blank">Webmaster Links</a></li>
+                    <li><a href="webmastery/downloads/tiledbgs.html" target="_blank">Tiled BGs</a></li>
+                    <li><a href="webmastery/downloads/fonts.html" target="_blank">Fonts</a></li>
+                    <li><a href="projects/ideas/" target="_blank">Site Ideas</a></li>
+                </ul>
+            </div>
         </main>
         
+        <!-- Original Sidebar (hidden on mobile) -->
         <aside id="leftSidebar">
             <h2>Updates</h2>
             <div class="box">
@@ -66,7 +89,6 @@
     </div>
     <footer id="footer">CC0 Public Domain, 2022</footer>
 </div>
-
 <!-- JavaScript to dynamically blur the background image as you scroll -->
 <script>
     window.addEventListener('scroll', function() {
@@ -77,13 +99,11 @@
         const blurValue = Math.min(scrollY / 25, 10);
         // Scales the image slightly to prevent ugly white edges from the blur
         const scaleValue = 1 + (blurValue / 200); 
-
         // Set the CSS variables dynamically
         header.style.setProperty('--blur-amount', blurValue + 'px');
         header.style.setProperty('--scale-amount', scaleValue);
     });
 </script>
-
 <!-- THIS IS THE CSS !-->
 <style>
     :root {
@@ -92,31 +112,26 @@
         --body-bg-image: url('https://sadhost.neocities.org/images/tiles/purplesky.gif');
         --content: #43256E;
     }
-
     @font-face {
         font-family: Nunito;
         src: url('https://sadhost.neocities.org/fonts/Nunito-Regular.ttf');
     }
-
     @font-face {
         font-family: Nunito;
         src: url('https://sadhost.neocities.org/fonts/Nunito-Bold.ttf');
         font-weight: bold;
     }
-
     @font-face {
         font-family: Nunito;
         src: url('https://sadhost.neocities.org/fonts/Nunito-Italic.ttf');
         font-style: italic;
     }
-
     @font-face {
         font-family: Nunito;
         src: url('https://sadhost.neocities.org/fonts/Nunito-BoldItalic.ttf');
         font-style: italic;
         font-weight: bold;
     }
-
     body {
         font-family: 'Nunito', sans-serif;
         margin: 0;
@@ -125,21 +140,21 @@
         color: #fceaff;
         background-image: var(--body-bg-image);
     }
-
     * {
         box-sizing: border-box;
     }
-
+    /* flex layout on container helps push the footer to the bottom */
     #container {
         width: 100%;
         margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; 
     }
-
     #container a {
         color: #fee7ff;
         font-weight: bold;
     }
-
     /* Fixed behind all other content */
     #header {
         position: fixed;
@@ -147,10 +162,9 @@
         left: 0;
         width: 100%;
         height: 250px; 
-        z-index: 1; /* Layer behind main content */
+        z-index: 1; 
         overflow: hidden; 
     }
-
     #header::before {
         content: "";
         position: absolute;
@@ -163,26 +177,22 @@
         background-size: cover;
         background-position: center;
         z-index: -1;
-        /* Dynamic blur and scale (updated by JS on scroll) */
         filter: blur(var(--blur-amount, 0px));
         transform: scale(var(--scale-amount, 1));
         will-change: filter, transform;
     }
-
     /* Sticky container for the navbar */
     #headerArea {
         position: sticky;
         top: 0;
-        z-index: 1000; /* Stays above everything */
-        margin-top: 250px; /* Pushes content down so header is visible at start */
+        z-index: 1000; 
+        margin-top: 250px; 
     }
-
     #navbar {
         height: 50px;
         background-color: #ffffff;
         width: 100%;
     }
-
     #navbar ul {
         display: flex;
         padding: 0;
@@ -192,78 +202,66 @@
         align-items: center;
         height: 100%;
     }
-
     #navbar li {
         padding-top: 0;
     }
-
     #navbar li a {
         color: #ffffff;
         font-weight: 800;
         text-decoration: none;
     }
-
     #navbar li a:hover {
         color: #ffffff;
         text-decoration: underline;
     }
-
     #navbar li a img {
         display: block;
         border: none;
         max-height: 32px; 
     }
-
-    /* Relative with a higher z-index to slide OVER the fixed header */
+    /* flex: 1 expands this area to push footer down */
     #flex {
         display: flex;
         position: relative;
         z-index: 2; 
+        flex: 1; 
     }
-
     aside {
         background-color: #241445;
         width: 200px;
         padding: 20px;
         font-size: smaller;
     }
-
     #leftSidebar {
         order: 1;
     }
-
     #rightSidebar {
         order: 3;
     }
-
     footer {
         position: relative;
-        z-index: 2; /* Keeps footer over the header */
+        z-index: 2; 
         background-color: #ffffff;
         width: 100%;
         height: 40px;
         padding: 10px;
         text-align: center;
+        color: #13092D; 
     }
-
     h1, h2, h3 {
         color: #ED64F5;
     }
-
     h1 {
         font-size: 25px;
     }
-
     strong {
         color: #fff8ff;
     }
-
     .box {
         background-color: #13092D;
         border: 1px solid #ED64F5;
         padding: 10px;
     }
-
     #topBar {
         width: 100%;
         height: 30px;
@@ -271,7 +269,6 @@
         font-size: smaller;
         background-color: #13092D;
     }
-
     main {
         background-color: #ffffff;
         flex: 1;
@@ -282,7 +279,10 @@
         align-items: center;
         text-align: center;
     }
-
+    /* NEW: Hide the mobile sidebar content copy on desktop computers */
+    #mobile-sidebar-content {
+        display: none;
+    }
     .video-container {
         position: relative;
         width: 95%; 
@@ -295,7 +295,6 @@
         box-shadow: 0 8px 30px rgba(237, 100, 245, 0.45);
         background-color: #000;
     }
-
     .video-container iframe {
         position: absolute;
         top: 0;
@@ -303,7 +302,6 @@
         width: 100%;
         height: 100%;
     }
-
     .video-info {
         background-color: #13092D;
         border: 1px solid #ED64F5;
@@ -315,35 +313,85 @@
         width: 95%;
         max-width: 1000px;
     }
-
     .video-info a {
         display: inline-block;
         margin-top: 5px;
     }
-
+    /* MOBILE BREAKPOINT (800px and under) */
     @media only screen and (max-width: 800px) {
-        #flex {
-            flex-wrap: wrap;
+        #header {
+            height: 150px;
         }
-
-        aside {
+        #headerArea {
+            margin-top: 150px;
+        }
+        /* Navbar layout: 3x2 Grid for buttons */
+        #navbar {
+            height: auto;
+            padding: 10px 5px;
+        }
+        #navbar ul {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            grid-template-rows: repeat(2, auto);
+            gap: 10px 5px;
+            justify-items: center;
+            align-items: center;
+            padding: 0;
+            margin: 0;
             width: 100%;
         }
-
-        main {
-            order: 1;
+        #navbar li {
+            width: 100%;
+            display: flex;
+            justify-content: center;
         }
-
+        #navbar li a {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        #navbar li a img {
+            max-width: 100%; 
+            max-height: 28px; 
+            height: auto;
+            margin: 0 auto;
+        }
+        /* Stack layout vertically on mobile */
+        #flex {
+            flex-direction: column;
+        }
+        /* Hides original sidebar on phone screens */
         #leftSidebar {
-            order: 2;
+            display: none; 
         }
-
-        #rightSidebar {
-            order: 3;
+        /* Show and style the mobile-only sidebar content copy below the video info */
+        #mobile-sidebar-content {
+            flex-direction: column;
+            display: block;
+            width: 95%;
+            max-width: 1000px;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #241445; /* Dark background matching original sidebar style */
+            border-radius: 8px;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
         }
-
-        #navbar ul {
-            flex-wrap: wrap;
+        #mobile-sidebar-content h2 {
+            margin-top: 10px;
+        }
+        #mobile-sidebar-content ul {
+            padding-left: 20px;
+        }
+        #mobile-sidebar-content a {
+            color: #ED64F5;
+        }
+        main {
+            padding: 20px 10px;
+        }
+        footer {
+            margin-top: auto; 
         }
     }
 </style>
