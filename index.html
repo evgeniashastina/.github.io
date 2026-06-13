@@ -1,3 +1,4 @@
+
 <div id="container">
     <!-- The header in the background -->
     <div id="header"></div>
@@ -6,12 +7,12 @@
     <div id="headerArea">
         <nav id="navbar">
             <ul>
-                <li><a href="#"><img src="images/home_button.png" alt="Home"></a></li>
-                <li><a href="#">My Films</a></li>
-                <li><a href="#">Portfolio</a></li>
-                <li><a href="#">Life drawings</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Experience</a></li>
+                <li><a href="#"><img src="images/home_button.PNG" alt="Home"></a></li>
+                <li><a href="#"><img src="images/MyFilms_button.PNG" alt="My Films"></a></li>
+                <li><a href="#"><img src="images/Portfolio_button.PNG" alt="Portfolio"></a></li>
+                <li><a href="#"><img src="images/LifeDrawings_button.PNG" alt="Life Drawings"></a></li>
+                <li><a href="#"><img src="images/Experience_button.PNG" alt="Experience"></a></li>
+                <li><a href="#"><img src="images/Contact_button.PNG" alt="Contact"></a></li>
             </ul>
         </nav>
     </div>
@@ -20,7 +21,7 @@
         <!-- Main body -->
         <main>
             <h1>Evgenia Shastina</h1>
-            
+            <h2>Animation Showreel</h2>
             <!-- Video Container -->
             <div class="video-container">
                 <iframe 
@@ -65,6 +66,7 @@
     </div>
     <footer id="footer">CC0 Public Domain, 2022</footer>
 </div>
+
 <!-- JavaScript to dynamically blur the background image as you scroll -->
 <script>
     window.addEventListener('scroll', function() {
@@ -75,39 +77,46 @@
         const blurValue = Math.min(scrollY / 25, 10);
         // Scales the image slightly to prevent ugly white edges from the blur
         const scaleValue = 1 + (blurValue / 200); 
+
         // Set the CSS variables dynamically
         header.style.setProperty('--blur-amount', blurValue + 'px');
         header.style.setProperty('--scale-amount', scaleValue);
     });
 </script>
+
 <!-- THIS IS THE CSS !-->
 <style>
     :root {
         /* Change this URL to your own header image path */
-        --header-image: url('https://sadhost.neocities.org/images/layouts/wp.jpeg');
+        --header-image: url('images/header.PNG');
         --body-bg-image: url('https://sadhost.neocities.org/images/tiles/purplesky.gif');
         --content: #43256E;
     }
+
     @font-face {
         font-family: Nunito;
         src: url('https://sadhost.neocities.org/fonts/Nunito-Regular.ttf');
     }
+
     @font-face {
         font-family: Nunito;
         src: url('https://sadhost.neocities.org/fonts/Nunito-Bold.ttf');
         font-weight: bold;
     }
+
     @font-face {
         font-family: Nunito;
         src: url('https://sadhost.neocities.org/fonts/Nunito-Italic.ttf');
         font-style: italic;
     }
+
     @font-face {
         font-family: Nunito;
         src: url('https://sadhost.neocities.org/fonts/Nunito-BoldItalic.ttf');
         font-style: italic;
         font-weight: bold;
     }
+
     body {
         font-family: 'Nunito', sans-serif;
         margin: 0;
@@ -116,17 +125,21 @@
         color: #fceaff;
         background-image: var(--body-bg-image);
     }
+
     * {
         box-sizing: border-box;
     }
+
     #container {
         width: 100%;
         margin: 0;
     }
+
     #container a {
         color: #fee7ff;
         font-weight: bold;
     }
+
     /* Fixed behind all other content */
     #header {
         position: fixed;
@@ -137,6 +150,7 @@
         z-index: 1; /* Layer behind main content */
         overflow: hidden; 
     }
+
     #header::before {
         content: "";
         position: absolute;
@@ -144,15 +158,17 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: #5e4e8c;
+        background-color: #ffffff;
         background-image: var(--header-image);
         background-size: cover;
         background-position: center;
         z-index: -1;
+        /* Dynamic blur and scale (updated by JS on scroll) */
         filter: blur(var(--blur-amount, 0px));
         transform: scale(var(--scale-amount, 1));
         will-change: filter, transform;
     }
+
     /* Sticky container for the navbar */
     #headerArea {
         position: sticky;
@@ -160,12 +176,13 @@
         z-index: 1000; /* Stays above everything */
         margin-top: 250px; /* Pushes content down so header is visible at start */
     }
+
     #navbar {
         height: 50px;
         background-color: #ffffff;
         width: 100%;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); 
     }
+
     #navbar ul {
         display: flex;
         padding: 0;
@@ -175,64 +192,78 @@
         align-items: center;
         height: 100%;
     }
+
     #navbar li {
         padding-top: 0;
     }
+
     #navbar li a {
-        color: #ED64F5;
+        color: #ffffff;
         font-weight: 800;
         text-decoration: none;
     }
+
     #navbar li a:hover {
-        color: #a49cba;
+        color: #ffffff;
         text-decoration: underline;
     }
+
     #navbar li a img {
         display: block;
         border: none;
         max-height: 32px; 
     }
+
     /* Relative with a higher z-index to slide OVER the fixed header */
     #flex {
         display: flex;
         position: relative;
         z-index: 2; 
     }
+
     aside {
         background-color: #241445;
         width: 200px;
         padding: 20px;
         font-size: smaller;
     }
+
     #leftSidebar {
         order: 1;
     }
+
     #rightSidebar {
         order: 3;
     }
+
     footer {
         position: relative;
         z-index: 2; /* Keeps footer over the header */
-        background-color: #13092D;
+        background-color: #ffffff;
         width: 100%;
         height: 40px;
         padding: 10px;
         text-align: center;
     }
+
     h1, h2, h3 {
         color: #ED64F5;
     }
+
     h1 {
         font-size: 25px;
     }
+
     strong {
         color: #fff8ff;
     }
+
     .box {
         background-color: #13092D;
         border: 1px solid #ED64F5;
         padding: 10px;
     }
+
     #topBar {
         width: 100%;
         height: 30px;
@@ -240,8 +271,9 @@
         font-size: smaller;
         background-color: #13092D;
     }
+
     main {
-        background-color: #43256E;
+        background-color: #ffffff;
         flex: 1;
         padding: 40px 20px;
         order: 2;
@@ -250,6 +282,7 @@
         align-items: center;
         text-align: center;
     }
+
     .video-container {
         position: relative;
         width: 95%; 
@@ -262,6 +295,7 @@
         box-shadow: 0 8px 30px rgba(237, 100, 245, 0.45);
         background-color: #000;
     }
+
     .video-container iframe {
         position: absolute;
         top: 0;
@@ -269,6 +303,7 @@
         width: 100%;
         height: 100%;
     }
+
     .video-info {
         background-color: #13092D;
         border: 1px solid #ED64F5;
@@ -280,78 +315,35 @@
         width: 95%;
         max-width: 1000px;
     }
+
     .video-info a {
         display: inline-block;
         margin-top: 5px;
     }
-    /* MOBILE BREAKPOINT (800px and under) */
+
     @media only screen and (max-width: 800px) {
-        /* Reduce header size on phones */
-        #header {
-            height: 150px;
-        }
-        #headerArea {
-            margin-top: 150px;
-        }
-        /* 1. Navbar layout: Auto height + 3x2 Grid for buttons */
-        #navbar {
-            height: auto;
-            padding: 12px 10px;
-        }
-        #navbar ul {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
-            gap: 8px;
-            align-items: center;
-        }
-        /* Styling buttons as touch elements on mobile */
-        #navbar li a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 8px 4px;
-            background-color: #f7f5ff; /* Opaque background so they stand out */
-            border: 1px solid #ED64F5;
-            border-radius: 6px;
-            font-size: 12px;
-            min-height: 38px;
-        }
-        #navbar li a img {
-            max-height: 22px; /* Shrinks the home image slightly on mobile */
-        }
-        /* 2. Reordering main content so the video is at the top */
-        main {
-            display: flex;
-            flex-direction: column;
-            padding: 20px 10px;
-        }
-        .video-container {
-            order: 1; /* Pushes video to the top of main */
-            width: 100%;
-            margin: 10px 0;
-            border-radius: 8px;
-        }
-        main h1 {
-            order: 2; /* Pushes title below the video */
-            margin: 15px 0 5px 0;
-            font-size: 22px;
-        }
-        .video-info {
-            order: 3; /* Places info at the bottom */
-            width: 100%;
-            margin-top: 10px;
-        }
         #flex {
             flex-wrap: wrap;
         }
+
         aside {
             width: 100%;
         }
+
+        main {
+            order: 1;
+        }
+
         #leftSidebar {
             order: 2;
         }
+
         #rightSidebar {
             order: 3;
+        }
+
+        #navbar ul {
+            flex-wrap: wrap;
         }
     }
 </style>
