@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio – Evgenia Shastina</title>
+</head>
+<body>
+<div id="container">
+    <!-- NAVBAR (same as index.html, no header above it) -->
+    <div id="headerArea">
+        <nav id="navbar">
+            <!-- Burger button (mobile only) -->
+            <button id="burger-btn" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <!-- Desktop nav links -->
+            <ul id="nav-menu">
+                <li><a href="index.html"><img src="images/home_button.PNG" alt="Home"></a></li>
+                <li><a href="myFilms.html"><img src="images/MyFilms_button.PNG" alt="My Films"></a></li>
+                <li><a href="portfolio.html"><img src="images/Portfolio_button.PNG" alt="Portfolio"></a></li>
+                <li><a href="lifeDrawings.html"><img src="images/LifeDrawings_button.PNG" alt="Life Drawings"></a></li>
+                <li><a href="experience.html"><img src="images/Experience_button.PNG" alt="Experience"></a></li>
+                <li><a href="contact.html"><img src="images/Contact_button.PNG" alt="Contact"></a></li>
+            </ul>
+            <!-- Mobile dropdown -->
+            <div id="mobile-dropdown">
+                <ul>
+                    <li><a href="index.html"><img src="images/home_button.PNG" alt="Home"></a></li>
+                    <li><a href="myFilms.html"><img src="images/MyFilms_button.PNG" alt="My Films"></a></li>
+                    <li><a href="portfolio.html"><img src="images/Portfolio_button.PNG" alt="Portfolio"></a></li>
+                    <li><a href="lifeDrawings.html"><img src="images/LifeDrawings_button.PNG" alt="Life Drawings"></a></li>
+                    <li><a href="experience.html"><img src="images/Experience_button.PNG" alt="Experience"></a></li>
+                    <li><a href="contact.html"><img src="images/Contact_button.PNG" alt="Contact"></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- Portfolio Title -->
+        <div id="portfolio-title">
+            <h1>Portfolio</h1>
+        </div>
+        <!-- Gallery Grid -->
+        <div id="gallery-grid">
+            <!-- Card 1: Backgrounds -->
+            <a href="backgrounds.html" class="gallery-card" 
+               data-images="images/bg/OpenHouse.png, images/bg/LivingRoom.jpg, images/bg/kupala top view.jpg">
+                <div class="card-image-wrapper">
+                    <img class="card-img" src="images/bg/LivingRoom.jpg" alt="Backgrounds">
+                    <div class="card-overlay">
+                        <span>View Gallery →</span>
+                    </div>
+                </div>
+                <div class="card-label">Backgrounds</div>
+            </a>
+            <!-- Card 2: Characters -->
+            <a href="characters.html" class="gallery-card"
+               data-images="images/portfolio/characters1.jpg,images/portfolio/characters2.jpg,images/portfolio/characters3.jpg">
+                <div class="card-image-wrapper">
+                    <img class="card-img" src="images/portfolio/characters1.jpg" alt="Characters">
+                    <div class="card-overlay">
+                        <span>View Gallery →</span>
+                    </div>
+                </div>
+                <div class="card-label">Characters</div>
+            </a>
+            <!-- Card 3: Storyboards -->
+            <a href="storyboards.html" class="gallery-card"
+               data-images="images/portfolio/storyboards1.jpg,images/portfolio/storyboards2.jpg,images/portfolio/storyboards3.jpg">
+                <div class="card-image-wrapper">
+                    <img class="card-img" src="images/portfolio/storyboards1.jpg" alt="Storyboards">
+                    <div class="card-overlay">
+                        <span>View Gallery →</span>
+                    </div>
+                </div>
+                <div class="card-label">Storyboards</div>
+            </a>
+            <!-- Card 4: Concept Art -->
+            <a href="concept.html" class="gallery-card"
+               data-images="images/portfolio/concept1.jpg,images/portfolio/concept2.jpg,images/portfolio/concept3.jpg">
+                <div class="card-image-wrapper">
+                    <img class="card-img" src="images/portfolio/concept1.jpg" alt="Concept Art">
+                    <div class="card-overlay">
+                        <span>View Gallery →</span>
+                    </div>
+                </div>
+                <div class="card-label">Concept Art</div>
+            </a>
+        <!-- Card 5: Other -->
+            <a href="other.html" class="gallery-card"
+               data-images="images/portfolio/concept1.jpg,images/portfolio/concept2.jpg,images/portfolio/concept3.jpg">
+                <div class="card-image-wrapper">
+                    <img class="card-img" src="images/portfolio/concept1.jpg" alt="Other">
+                    <div class="card-overlay">
+                        <span>View Gallery →</span>
+                    </div>
+                </div>
+                <div class="card-label">Other</div>
+            </a>
+        </div><!-- end gallery-grid -->
+    </main>
+    <footer id="footer">Evgenia Shastina, 2026</footer>
+</div>
+<!-- JAVASCRIPT -->
+<script>
+    /* Burger menu toggle */
+    const burgerBtn = document.getElementById('burger-btn');
+    const mobileDropdown = document.getElementById('mobile-dropdown');
+    burgerBtn.addEventListener('click', function() {
+        burgerBtn.classList.toggle('open');
+        mobileDropdown.classList.toggle('open');
+    });
+    mobileDropdown.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+            burgerBtn.classList.remove('open');
+            mobileDropdown.classList.remove('open');
+        });
+    });
+    /* Hover slideshow for each gallery card */
+    document.querySelectorAll('.gallery-card').forEach(function(card) {
+        /* Read the list of images from the data-images attribute */
+        const images = card.getAttribute('data-images').split(',');
+        const img = card.querySelector('.card-img');
+        let currentIndex = 0;
+        let slideshowInterval = null;
+        /* When mouse enters the card, start cycling through images */
+        card.addEventListener('mouseenter', function() {
+            if (images.length < 2) return; /* Only slide if there are multiple images */
+            slideshowInterval = setInterval(function() {
+                currentIndex = (currentIndex + 1) % images.length;
+                img.style.opacity = '0'; /* Fade out */
+                setTimeout(function() {
+                    img.src = images[currentIndex].trim();
+                    img.style.opacity = '1'; /* Fade in */
+                }, 200);
+            }, 900); /* Changes image every 900ms */
+        });
+        /* When mouse leaves the card, stop slideshow and reset to first image */
+        card.addEventListener('mouseleave', function() {
+            clearInterval(slideshowInterval);
+            currentIndex = 0;
+            img.style.opacity = '0';
+            setTimeout(function() {
+                img.src = images[0].trim();
+                img.style.opacity = '1';
+            }, 200);
+        });
+    });
+</script>
+<!-- CSS -->
+<style>
+    :root {
+        --body-bg-image: #ffffff;
+    }
+    @font-face {
+        font-family: Nunito;
+        src: url('fonts/MarseilleFreeRegular-rvKW8.otf');
+    }
+    @font-face {
+        font-family: Nunito;
+        src: url('fonts/MarseilleFreeRegular-rvKW8.otf');
+        font-weight: bold;
+    }
+    @font-face {
+        font-family: Nunito;
+        src: url('fonts/MarseilleFreeRegular-rvKW8.otf');
+        font-style: italic;
+    }
+    @font-face {
+        font-family: Nunito;
+        src: url('fonts/MarseilleFreeRegular-rvKW8.otf');
+        font-style: italic;
+        font-weight: bold;
+    }
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        font-family: 'Nunito', sans-serif;
+        background-color: #ffffff;
+        background-image: var(--body-bg-image);
+        background-size: 65px;
+        color: #ffffff;
+        min-height: 100vh;
+    }
+    #container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    /* ======================== */
+    /* NAVBAR                   */
+    /* ======================== */
+    #headerArea {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        /* No margin-top here because there is no header image on this page */
+    }
+    #navbar {
+        height: 50px;
+        background-color: #ffffff;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    /* Desktop: burger and dropdown hidden */
+    #burger-btn {
+        display: none;
+    }
+    #mobile-dropdown {
+        display: none;
+    }
+    #nav-menu {
+        display: flex;
+        list-style: none;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    #nav-menu li a img {
+        display: block;
+        max-height: 32px;
+        border: none;
+        transition: transform 0.2s ease;
+    }
+    #nav-menu li a img:hover {
+        transform: scale(1.08);
+    }
+    /* ======================== */
+    /* MAIN CONTENT             */
+    /* ======================== */
+    main {
+        flex: 1;
+        padding: 50px 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    /* Portfolio Title Section */
+    #portfolio-title {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+    #portfolio-title h1 {
+        font-size: 42px;
+        color: #bf2b2b;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+    }
+    #portfolio-title p {
+        font-size: 15px;
+        color: #bf2b2b;
+        opacity: 0.85;
+    }
+    /* ======================== */
+    /* GALLERY GRID             */
+    /* ======================== */
+    #gallery-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* 2 cards per row */
+        gap: 40px 50px;                 /* row gap, column gap */
+        width: 100%;
+        max-width: 1100px;
+    }
+    /* Each gallery card is a clickable link */
+    .gallery-card {
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+    }
+    /* The image box */
+    .card-image-wrapper {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 4 / 3; /* Makes all cards the same proportional height */
+        overflow: hidden;
+        border-radius: 10px;
+        border: 2px solid hsl(0, 0%, 100%);
+        box-shadow: 0 6px 25px rgba(255, 255, 255, 0.3);
+        background-color: #ffffff;
+    }
+    /* The image inside the card */
+    .card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;         /* Fills the box without stretching */
+        display: block;
+        transition: opacity 0.2s ease, transform 0.4s ease;
+    }
+    /* Slight zoom on hover */
+    .gallery-card:hover .card-img {
+        transform: scale(1.04);
+    }
+    /* Dark overlay with "View Gallery" text, fades in on hover */
+    .card-overlay {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(255, 255, 255, 0.55);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        border-radius: 8px;
+    }
+    .gallery-card:hover .card-overlay {
+        opacity: 1;
+    }
+    .card-overlay span {
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        border: 2px solid #ffffff;
+        padding: 10px 20px;
+        border-radius: 6px;
+        background-color: rgba(237, 100, 245, 0.2);
+    }
+    /* Category title below each card */
+    .card-label {
+        margin-top: 14px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #bf2b2b;
+        text-align: left;
+        padding-left: 4px;
+        letter-spacing: 0.5px;
+    }
+    /* ======================== */
+    /* FOOTER                   */
+    /* ======================== */
+    footer {
+        background-color: #ffffff;
+        width: 100%;
+        height: 40px;
+        padding: 10px;
+        text-align: center;
+        color: #13092D;
+        margin-top: auto;
+    }
+    /* ============================================= */
+    /* MOBILE ONLY                                   */
+    /* ============================================= */
+    @media only screen and (max-width: 800px) {
+        /* Navbar: burger on the right */
+        #navbar {
+            justify-content: flex-end;
+            padding: 0 15px;
+        }
+        /* Hide desktop links on mobile */
+        #nav-menu {
+            display: none;
+        }
+        /* Show burger button */
+        #burger-btn {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 28px;
+            height: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1100;
+        }
+        #burger-btn span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: #ff9956;
+            border-radius: 3px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        #burger-btn.open span:nth-child(1) {
+            transform: translateY(8.5px) rotate(45deg);
+        }
+        #burger-btn.open span:nth-child(2) {
+            opacity: 0;
+        }
+        #burger-btn.open span:nth-child(3) {
+            transform: translateY(-8.5px) rotate(-45deg);
+        }
+        /* Mobile dropdown */
+        #mobile-dropdown {
+            display: block;
+            position: absolute;
+            top: 50px;
+            right: 0;
+            width: 220px;
+            background-color: rgba(255, 255, 255, 0.97);
+            border-left: 2px solid #ffffff;
+            border-bottom: 2px solid #ffffff;
+            border-radius: 0 0 0 10px;
+            z-index: 1050;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+        }
+        #mobile-dropdown.open {
+            max-height: 500px;
+            padding: 10px 0;
+        }
+        #mobile-dropdown ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        #mobile-dropdown li {
+            width: 80%;
+            display: flex;
+            justify-content: center;
+        }
+        #mobile-dropdown li a img {
+            max-width: 100%;
+            max-height: 30px;
+            height: auto;
+            margin: 0 auto;
+        }
+        /* Stack gallery to 1 column on phones */
+        #gallery-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        main {
+            padding: 30px 15px;
+        }
+        #portfolio-title h1 {
+            font-size: 30px;
+        }
+        .card-label {
+            font-size: 18px;
+        }
+    }
+</style>
+</body>
+</html>
