@@ -3,155 +3,372 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Backgrounds – Evgenia Shastina</title>
+    <title>My Portfolio – Evgenia Shastina</title>
+
+    <style>
+        /* ======================== */
+        /* GENERAL STYLES           */
+        /* ======================== */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f0f0f0; /* Clean, minimalistic off-white */
+            color: #333;
+        }
+
+        #container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ======================== */
+        /* NAVBAR                   */
+        /* ======================== */
+        #headerArea {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        #navbar {
+            height: 50px;
+            background-color: #f0f0f0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative; 
+        }
+
+        #burger-btn { display: none; }
+        #mobile-dropdown { display: none; }
+
+        #nav-menu {
+            display: flex;
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        #nav-menu li a { text-decoration: none; }
+        #nav-menu li a img {
+            display: block;
+            border: none;
+            max-height: 32px;
+            transition: transform 0.2s ease;
+        }
+        #nav-menu li a img:hover { transform: scale(1.08); }
+
+        /* ======================== */
+        /* LIST BLOCKS LAYOUT       */
+        /* ======================== */
+        main {
+            flex: 1;
+            padding: 60px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .list-block {
+            display: flex;
+            gap: 60px; /* Space between images and text */
+            margin-bottom: 120px; /* Lots of minimalistic white space between blocks */
+            align-items: center; /* Centers the text vertically with the images */
+        }
+
+        /* --- Left Side: Images --- */
+        .block-images {
+            flex: 1.2; /* Gives the images slightly more than half the page */
+            flex-direction: column;
+            display: flex;
+            gap: 15px; /* Gap between multiple images */
+        }
+
+        .gallery-img {
+            flex: 1; /* Automatically shares the space evenly whether it's 1, 2, or 3 images */
+            width: 100%;
+            height: 380px; 
+            object-fit: cover;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        /* --- Right Side: Text (WITH HAND DRAWN BACKGROUND) --- */
+        .block-text {
+            flex: 1; 
+            background-image: url('images/experience/Text_box.png'); /* The hand drawn outline image */
+            background-size: 100% 100%; /* Stretches exactly to the text size */
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 50px 40px; /* Space inside the box so text doesn't touch the drawn borders */
+        }
+
+        .block-text h2 {
+            font-size: 32px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #222;
+            letter-spacing: 1px;
+        }
+
+        .block-text p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        /* ======================== */
+        /* LIGHTBOX / POPUP         */
+        /* ======================== */
+        #lightbox {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,.9);
+    z-index: 9999;
+}
+
+#lightbox.hidden{
+    display:none;
+}
+
+#lightbox-content{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:100vw;
+    height:100dvh; /* use dynamic viewport */
+    position:relative;
+}
+
+#lightbox-img{
+    display:block;
+    max-width:95vw;
+    max-height:95dvh;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+}
+
+        .nav-arrow {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.15); color: white; border: none;
+            font-size: 30px; padding: 15px 25px; cursor: pointer;
+            z-index: 3; border-radius: 8px; transition: background 0.2s ease;
+        }
+        .nav-arrow:hover { background: rgba(255,255,255,0.4); }
+        #lightbox-prev { left: 20px; }
+        #lightbox-next { right: 20px; }
+        
+        #lightbox-close {
+            position: absolute; top: 20px; right: 25px;
+            background: transparent; color: white; border: none;
+            font-size: 35px; cursor: pointer; z-index: 3;
+            transition: transform 0.2s ease;
+        }
+        #lightbox-close:hover { transform: scale(1.2); }
+
+        /* ============================================= */
+        /* MOBILE ONLY STYLES                            */
+        /* ============================================= */
+        @media only screen and (max-width: 800px) {
+            main { padding: 40px 20px; }
+            
+            /* Stacks the text under the images on phones */
+            .list-block {
+                flex-direction: column;
+                gap: 30px;
+                margin-bottom: 80px;
+                margin-right: auto;
+                margin-left: auto;
+            }
+
+            /* Creates a horizontal swipeable gallery for multiple images on phone */
+            .block-images {
+                width: 100%;
+                overflow-x: auto;
+                padding-bottom: 10px;
+                scrollbar-width: none;
+            }
+            .block-images::-webkit-scrollbar { display: none; }
+            
+            .gallery-img {
+                flex: 0 0 100%; /* Images take up 85% of screen width so user knows they can swipe */
+                height: 280px;
+                
+            }
+            /* If there is only ONE image, make it take 100% width on phone */
+            .gallery-img:only-child {
+                flex: 0 0 100%;
+            }
+
+            /* Box padding is slightly smaller on phones so it fits nicely */
+            .block-text {
+                padding: 40px 25px;
+            }
+
+            .block-text h2 { font-size: 26px; }
+            .block-text p { font-size: 16px; }
+            
+            .nav-arrow { padding: 10px 15px; font-size: 24px; }
+            #lightbox-prev { left: 10px; }
+            #lightbox-next { right: 10px; }
+            #lightbox-img { max-width: 100%; max-height: 80%; border-radius: 0;}
+            #lightbox-close { top: 10px; right: 15px; }
+
+            /* Navbar mobile */
+            #navbar { justify-content: flex-end; padding: 0 15px; }
+            #nav-menu { display: none; }
+            #burger-btn {
+                display: flex; flex-direction: column; justify-content: space-between;
+                width: 28px; height: 20px; background: none; border: none;
+                cursor: pointer; padding: 0; margin-right: 25px; z-index: 1100;
+            }
+            #burger-btn span {
+                display: block; width: 100%; height: 3px; background-color: #ff9956;
+                border-radius: 3px; transition: transform 0.3s ease, opacity 0.3s ease;
+            }
+            #burger-btn.open span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
+            #burger-btn.open span:nth-child(2) { opacity: 0; }
+            #burger-btn.open span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
+            #mobile-dropdown {
+                display: block; position: absolute; top: 50px; right: 0; width: 220px;
+                background-color: rgba(253, 253, 253, 0.98); border-left: 2px solid #e0e0e0;
+                border-bottom: 2px solid #e0e0e0; border-radius: 0 0 0 10px; z-index: 1050;
+                max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease;
+                box-shadow: -4px 4px 15px rgba(0,0,0,0.1);
+            }
+            #mobile-dropdown.open { max-height: 500px; padding: 15px 0; }
+            #mobile-dropdown ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+            #mobile-dropdown li { width: 80%; display: flex; justify-content: center; }
+            #mobile-dropdown li a img { max-width: 100%; max-height: 30px; height: auto; margin: 0 auto; }
+        }
+    </style>
 </head>
 <body>
 <div id="container">
+    
     <!-- NAVBAR -->
     <div id="headerArea">
         <nav id="navbar">
             <button id="burger-btn" aria-label="Open menu">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </button>
             <ul id="nav-menu">
-                <li><a href="index.html"><img src="images/home_button.PNG" alt="Home"></a></li>
-                <li><a href="#"><img src="images/MyFilms_button.PNG" alt="My Films"></a></li>
-                <li><a href="portfolio.html"><img src="images/Portfolio_button.PNG" alt="Portfolio"></a></li>
-                <li><a href="#"><img src="images/LifeDrawings_button.PNG" alt="Life Drawings"></a></li>
-                <li><a href="#"><img src="images/Experience_button.PNG" alt="Experience"></a></li>
-                <li><a href="#"><img src="images/Contact_button.PNG" alt="Contact"></a></li>
+                <li><a href="index.html"><img src="images/home_button.PNG" onmouseover="this.src='images/Home.GIF'" onmouseout="this.src='images/home_button.PNG'" alt="Home"></a></li>
+                <li><a href="myFilms.html"><img src="images/MyFilms_button.PNG" onmouseover="this.src='images/MyFilms.GIF'" onmouseout="this.src='images/MyFilms_button.PNG'" alt="My Films"></a></li>
+                <li><a href="portfolio.html"><img src="images/Portfolio_button.PNG" onmouseover="this.src='images/Portfolio.GIF'" onmouseout="this.src='images/Portfolio_button.PNG'" alt="Portfolio"></a></li>
+                <li><a href="lifeDrawings.html"><img src="images/LifeDrawings_button.PNG" onmouseover="this.src='images/LifeDrawings.GIF'" onmouseout="this.src='images/LifeDrawings_button.PNG'" alt="Life Drawings"></a></li>
+                <li><a href="experience.html"><img src="images/Experience_button.PNG" onmouseover="this.src='images/Experience.GIF'" onmouseout="this.src='images/Experience_button.PNG'" alt="Experience"></a></li>
+                <li><a href="contact.html"><img src="images/Contact_button.PNG" onmouseover="this.src='images/Contact.GIF'" onmouseout="this.src='images/Contact_button.PNG'" alt="Contact"></a></li>
             </ul>
             <div id="mobile-dropdown">
                 <ul>
                     <li><a href="index.html"><img src="images/home_button.PNG" alt="Home"></a></li>
-                    <li><a href="#"><img src="images/MyFilms_button.PNG" alt="My Films"></a></li>
+                    <li><a href="myFilms.html"><img src="images/MyFilms_button.PNG" alt="My Films"></a></li>
                     <li><a href="portfolio.html"><img src="images/Portfolio_button.PNG" alt="Portfolio"></a></li>
-                    <li><a href="#"><img src="images/LifeDrawings_button.PNG" alt="Life Drawings"></a></li>
-                    <li><a href="#"><img src="images/Experience_button.PNG" alt="Experience"></a></li>
-                    <li><a href="#"><img src="images/Contact_button.PNG" alt="Contact"></a></li>
+                    <li><a href="lifeDrawings.html"><img src="images/LifeDrawings_button.PNG" alt="Life Drawings"></a></li>
+                    <li><a href="experience.html"><img src="images/Experience_button.PNG" alt="Experience"></a></li>
+                    <li><a href="contact.html"><img src="images/Contact_button.PNG" alt="Contact"></a></li>
                 </ul>
             </div>
         </nav>
     </div>
+
     <!-- MAIN CONTENT -->
     <main>
-        <!-- Page Title -->
-        <div id="gallery-title">
-            <a href="portfolio.html" id="back-link">← Back to Portfolio</a>
-            <h1>Backgrounds</h1>
-            <p>Click any image to view it in full detail</p>
-        </div>
-        <!-- 
-            MASONRY GALLERY
-            ================
-            To add your images, copy one of the <div class="gallery-item"> blocks below
-            and change:
-              1. data-src  → path to your image file
-              2. data-desc → the description text shown in the lightbox
-              3. The <img src="..."> → same path as data-src
-              4. The <p class="img-title"> → short title shown under the image
-        -->
-        <div id="masonry-gallery">
-            <div class="gallery-item" 
-                 data-src="images/backgrounds/bg1.jpg"
-                 data-desc="A forest clearing at dawn. Created as a background painting for a short animated film. Medium: digital, Procreate.">
-                <img src="images/bg/bed1.png" alt="Forest clearing">
-                <p class="img-title">Forest Clearing</p>
+
+        <!-- BLOCK 1 (Example with ONE image) -->
+        <section class="list-block">
+            <div class="block-images">
+                <img src="images/concept/IMG_2660.PNG" alt="Artwork" class="gallery-img">
+                <img src="images/concept/colorscheme thumbnails.png" alt="Artwork" class="gallery-img">
             </div>
-            <div class="gallery-item"
-                 data-src="images/backgrounds/bg2.jpg"
-                 data-desc="An old cobblestone street at night, lit by warm lanterns. Background concept for a mystery project.">
-                <img src="images/bg/bed2.png" alt="Cobblestone street">
-                <p class="img-title">Night Street</p>
+            <div class="block-text">
+                <h2>Single Image Block</h2>
+                <p>Because you only put one image in this block, the code automatically makes it take up the entire left side so it looks perfectly balanced!</p>
+                <p>This is a great layout for highlighting one really important piece of artwork or a single movie poster.</p>
             </div>
-            <div class="gallery-item"
-                 data-src="images/backgrounds/bg6.jpg"
-                 data-desc="Snowy mountain village at twilight. Painted as a study in cool colour palettes.">
-                <img src="images/bg/staircase.jpeg" alt="Mountain village">
-                <p class="img-title">Mountain Village</p>
+        </section>
+        
+        <section class="list-block">
+            <div class="block-images">
+                <img src="images/concept/Untitled_Artwork (30).png" alt="Artwork" class="gallery-img">
             </div>
-            <div class="gallery-item"
-                 data-src="images/backgrounds/bg3.jpg"
-                 data-desc="Underwater cave environment. Inspired by bioluminescent deep sea creatures. Digital painting.">
-                <img src="images/bg/house outside.png" alt="Underwater cave">
-                <p class="img-title">Underwater Cave</p>
+            <div class="block-text">
+                <h2>Three Images Block</h2>
+                <p>Three images shrink slightly to fit perfectly next to each other in an elegant row.</p>
+                <p>If you view this block on a phone, the images will automatically convert into a swipeable horizontal gallery so they don't get too skinny!</p>
             </div>
-            <div class="gallery-item"
-                 data-src="images/backgrounds/bg4.jpg"
-                 data-desc="Rooftop view of a fictional city at sunset. Created for a personal animation project.">
-                <img src="images/bg/christmas table.png" alt="City rooftop">
-                <p class="img-title">City Rooftop</p>
+        </section>
+
+        <!-- BLOCK 2 (Example with TWO images) -->
+        <section class="list-block">
+            <div class="block-images">
+                <img src="images/concept/concept1.png" alt="Artwork" class="gallery-img">
+                <img src="images/concept/concept2.png" alt="Artwork" class="gallery-img">
+                <img src="images/concept/concept3.png" alt="Artwork" class="gallery-img">
             </div>
-            <div class="gallery-item"
-                 data-src="images/backgrounds/bg5.jpg"
-                 data-desc="An abandoned library interior. Focused on the use of light and shadow to create atmosphere.">
-                <img src="images/bg/LivingRoom.jpg" alt="Abandoned library">
-                <p class="img-title">Abandoned Library</p>
+            <div class="block-text">
+                <h2>Two Images Block</h2>
+                <p>Here you have two images. The code evenly splits the left side right down the middle so they both look identically sized.</p>
+                <p>Clicking on either image will open the popup window, and you can use the arrows to easily click back and forth between these specific two images!</p>
             </div>
-            <div class="gallery-item"
-                 data-src="images/backgrounds/bg6.jpg"
-                 data-desc="Snowy mountain village at twilight. Painted as a study in cool colour palettes.">
-                <img src="images/bg/kupala top view.PNG" alt="Mountain village">
-                <p class="img-title">Mountain Village</p>
+        </section>
+
+        <!-- BLOCK 3 (Example with THREE images) -->
+        <section class="list-block">
+            <div class="block-images">
+                <img src="images/concept/Mood thumbnails (1).png" alt="Artwork" class="gallery-img">
+                <img src="images/concept/Kupala concept 2.png" alt="Artwork" class="gallery-img">
+                <img src="images/concept/Kupala Concept1.png" alt="Artwork" class="gallery-img">
             </div>
-            <div class="gallery-item"
-                 data-src="images/backgrounds/bg6.jpg"
-                 data-desc="Snowy mountain village at twilight. Painted as a study in cool colour palettes.">
-                <img src="images/bg/kupala down view.PNG" alt="Mountain village">
-                <p class="img-title">Mountain Village</p>
+            <div class="block-text">
+                <h2>Three Images Block</h2>
+                <p>Three images shrink slightly to fit perfectly next to each other in an elegant row.</p>
+                <p>If you view this block on a phone, the images will automatically convert into a swipeable horizontal gallery so they don't get too skinny!</p>
             </div>
-            <div class="gallery-item"
-                 data-src="images/backgrounds/bg6.jpg"
-                 data-desc="Snowy mountain village at twilight. Painted as a study in cool colour palettes.">
-                <img src="images/bg/OpenHouse.png" alt="Mountain village">
-                <p class="img-title">Mountain Village</p>
-            </div>
-            <div class="gallery-item"
-                 data-src="images/backgrounds/bg6.jpg"
-                 data-desc="Snowy mountain village at twilight. Painted as a study in cool colour palettes.">
-                <img src="images/bg/christmas corridor.png" alt="Mountain village">
-                <p class="img-title">Mountain Village</p>
-            </div>
-            <div class="gallery-item"
-                 data-src="images/backgrounds/bg6.jpg"
-                 data-desc="Snowy mountain village at twilight. Painted as a study in cool colour palettes.">
-                <img src="images/bg/forest.PNG" alt="Mountain village">
-                <p class="img-title">Mountain Village</p>
-            </div>
-            
-            
-        </div><!-- end masonry-gallery -->
+        </section>
+        
     </main>
-    <footer id="footer">CC0 Public Domain, 2022</footer>
 </div>
-<!-- 
-    LIGHTBOX MODAL
-    ===============
-    This appears when you click an image.
-    You do not need to edit this part.
--->
+
+<!-- ========================================== -->
+<!-- LIGHTBOX                                   -->
+<!-- ========================================== -->
 <div id="lightbox" class="hidden">
-    <div id="lightbox-box">
-        <!-- Close button -->
-        <button id="lightbox-close" aria-label="Close">✕</button>
-        <!-- Left: full image -->
-        <div id="lightbox-img-side">
-            <img id="lightbox-img" src="" alt="">
-        </div>
-        <!-- Right: description panel -->
-        <div id="lightbox-info-side">
-            <h2 id="lightbox-title"></h2>
-            <p id="lightbox-desc"></p>
-        </div>
-    </div>
-    <!-- Dark backdrop, click it to close -->
     <div id="lightbox-backdrop"></div>
+    <button id="lightbox-close" aria-label="Close">✕</button>
+    <button id="lightbox-prev" class="nav-arrow">❮</button>
+    <div id="lightbox-content">
+        <img id="lightbox-img" src="" alt="Fullscreen view">
+    </div>
+    <button id="lightbox-next" class="nav-arrow">❯</button>
 </div>
-<!-- JAVASCRIPT -->
+
+<!-- ========================================== -->
+<!-- JAVASCRIPT                                 -->
+<!-- ========================================== -->
 <script>
-    /* ---- Burger menu ---- */
+    // 1. Navbar Logic
     const burgerBtn = document.getElementById('burger-btn');
     const mobileDropdown = document.getElementById('mobile-dropdown');
     burgerBtn.addEventListener('click', function() {
@@ -164,397 +381,73 @@
             mobileDropdown.classList.remove('open');
         });
     });
-    /* ---- Lightbox ---- */
-    const lightbox       = document.getElementById('lightbox');
-    const lightboxImg    = document.getElementById('lightbox-img');
-    const lightboxTitle  = document.getElementById('lightbox-title');
-    const lightboxDesc   = document.getElementById('lightbox-desc');
-    const lightboxClose  = document.getElementById('lightbox-close');
-    const lightboxBack   = document.getElementById('lightbox-backdrop');
-    /* Open lightbox when a gallery item is clicked */
-    document.querySelectorAll('.gallery-item').forEach(function(item) {
-        item.addEventListener('click', function() {
-            const src   = item.getAttribute('data-src');
-            const desc  = item.getAttribute('data-desc');
-            const title = item.querySelector('.img-title').textContent;
-            lightboxImg.src      = src;
-            lightboxTitle.textContent = title;
-            lightboxDesc.textContent  = desc;
-            lightbox.classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; /* Prevent page scroll while open */
-        });
+
+    // 2. Lightbox Logic
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    let currentGalleryImages = [];
+    let currentIndex = 0;
+
+    // Open lightbox when clicking an image
+    document.body.addEventListener('click', (e) => {
+        if (e.target.classList.contains('gallery-img')) {
+            // Find which specific block we clicked inside
+            const parentBlock = e.target.closest('.block-images');
+            
+            // Get only the images from THAT specific block
+            currentGalleryImages = Array.from(parentBlock.querySelectorAll('.gallery-img'));
+            
+            // Find the index of the exact image we clicked
+            currentIndex = currentGalleryImages.indexOf(e.target);
+            
+            if (currentIndex !== -1) {
+                showLightboxImage();
+                lightbox.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Stop background page from scrolling
+            }
+        }
     });
-    /* Close lightbox */
+
+    function showLightboxImage() {
+        if (currentGalleryImages.length > 0) {
+            lightboxImg.src = currentGalleryImages[currentIndex].src;
+        }
+    }
+
     function closeLightbox() {
         lightbox.classList.add('hidden');
+        document.body.style.overflow = ''; 
         lightboxImg.src = '';
-        document.body.style.overflow = '';
     }
-    lightboxClose.addEventListener('click', closeLightbox);
-    lightboxBack.addEventListener('click', closeLightbox);
-    /* Close with Escape key */
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') closeLightbox();
+
+    function nextImage() {
+        if (currentGalleryImages.length > 0) {
+            currentIndex = (currentIndex + 1) % currentGalleryImages.length;
+            showLightboxImage();
+        }
+    }
+
+    function prevImage() {
+        if (currentGalleryImages.length > 0) {
+            currentIndex = (currentIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
+            showLightboxImage();
+        }
+    }
+
+    // Button event listeners
+    document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+    document.getElementById('lightbox-backdrop').addEventListener('click', closeLightbox);
+    document.getElementById('lightbox-next').addEventListener('click', nextImage);
+    document.getElementById('lightbox-prev').addEventListener('click', prevImage);
+
+    // Keyboard support
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('hidden')) {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+        }
     });
 </script>
-<!-- CSS -->
-<style>
-    :root {
-        --body-bg-image: url('https://sadhost.neocities.org/images/tiles/purplesky.gif');
-    }
-    @font-face {
-        font-family: Nunito;
-        src: url('https://sadhost.neocities.org/fonts/Nunito-Regular.ttf');
-    }
-    @font-face {
-        font-family: Nunito;
-        src: url('https://sadhost.neocities.org/fonts/Nunito-Bold.ttf');
-        font-weight: bold;
-    }
-    @font-face {
-        font-family: Nunito;
-        src: url('https://sadhost.neocities.org/fonts/Nunito-Italic.ttf');
-        font-style: italic;
-    }
-    @font-face {
-        font-family: Nunito;
-        src: url('https://sadhost.neocities.org/fonts/Nunito-BoldItalic.ttf');
-        font-style: italic;
-        font-weight: bold;
-    }
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-    body {
-        font-family: 'Nunito', sans-serif;
-        background-color: #f7f5ff;
-        background-image: var(--body-bg-image);
-        background-size: 65px;
-        color: #fceaff;
-        min-height: 100vh;
-    }
-    #container {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
-    /* ===================== */
-    /* NAVBAR                */
-    /* ===================== */
-    #headerArea {
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-    }
-    #navbar {
-        height: 50px;
-        background-color: #ffffff;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    #burger-btn { display: none; }
-    #mobile-dropdown { display: none; }
-    #nav-menu {
-        display: flex;
-        list-style: none;
-        justify-content: space-evenly;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        padding: 0;
-        margin: 0;
-    }
-    #nav-menu li a img {
-        display: block;
-        max-height: 32px;
-        border: none;
-        transition: transform 0.2s ease;
-    }
-    #nav-menu li a img:hover {
-        transform: scale(1.08);
-    }
-    /* ===================== */
-    /* MAIN / TITLE          */
-    /* ===================== */
-    main {
-        flex: 1;
-        padding: 50px 40px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    #gallery-title {
-        text-align: center;
-        margin-bottom: 45px;
-        width: 100%;
-    }
-    #back-link {
-        display: inline-block;
-        margin-bottom: 15px;
-        color: #ED64F5;
-        font-weight: bold;
-        text-decoration: none;
-        font-size: 14px;
-        transition: opacity 0.2s;
-    }
-    #back-link:hover {
-        opacity: 0.7;
-    }
-    #gallery-title h1 {
-        font-size: 42px;
-        color: #ED64F5;
-        letter-spacing: 2px;
-        margin-bottom: 8px;
-    }
-    #gallery-title p {
-        font-size: 14px;
-        color: #d8b4fe;
-    }
-    /* ===================== */
-    /* MASONRY GALLERY       */
-    /* ===================== */
-    #masonry-gallery {
-        /* CSS columns create the masonry effect automatically.
-           Each image drops into the shortest column, 
-           preserving its original proportions. */
-        column-count: 3;       /* 3 columns on desktop */
-        column-gap: 20px;
-        width: 100%;
-        max-width: 1300px;
-    }
-    /* Each gallery item */
-    .gallery-item {
-        break-inside: avoid;   /* Prevents an image from being split across columns */
-        margin-bottom: 20px;
-        cursor: pointer;
-        position: relative;
-        border-radius: 8px;
-        overflow: hidden;
-        border: 2px solid transparent;
-        transition: border-color 0.3s ease, transform 0.3s ease;
-        background-color: #241445;
-    }
-    .gallery-item:hover {
-        border-color: #ED64F5;
-        transform: translateY(-4px); /* Lifts the card slightly on hover */
-        box-shadow: 0 10px 30px rgba(237, 100, 245, 0.3);
-    }
-    /* The image itself - keeps its original dimensions */
-    .gallery-item img {
-        width: 100%;         /* Fills the column width */
-        height: auto;        /* Height adjusts automatically, keeping original ratio */
-        display: block;
-        transition: opacity 0.3s ease;
-    }
-    .gallery-item:hover img {
-        opacity: 0.85;
-    }
-    /* Title shown below each image */
-    .img-title {
-        padding: 10px 12px;
-        font-size: 13px;
-        color: #d8b4fe;
-        text-align: left;
-        background-color: #1a0a3a;
-    }
-    /* ===================== */
-    /* LIGHTBOX              */
-    /* ===================== */
-    /* Dark background overlay */
-    #lightbox {
-        position: fixed;
-        top: 0; left: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: 9999;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    /* Hidden state */
-    #lightbox.hidden {
-        display: none;
-    }
-    /* Clickable dark backdrop */
-    #lightbox-backdrop {
-        position: absolute;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background-color: rgba(8, 3, 26, 0.88);
-    }
-    /* The main lightbox box (70% of screen) */
-    #lightbox-box {
-        position: relative;
-        z-index: 1;
-        width: 70vw;         /* 70% of screen width */
-        max-height: 85vh;    /* Max 85% of screen height */
-        background-color: #13092D;
-        border: 2px solid #ED64F5;
-        border-radius: 12px;
-        box-shadow: 0 20px 60px rgba(237, 100, 245, 0.4);
-        display: flex;       /* Side-by-side: image left, description right */
-        overflow: hidden;
-    }
-    /* Close button */
-    #lightbox-close {
-        position: absolute;
-        top: 12px;
-        right: 15px;
-        background: none;
-        border: none;
-        color: #ED64F5;
-        font-size: 22px;
-        cursor: pointer;
-        z-index: 10;
-        transition: transform 0.2s ease;
-        line-height: 1;
-    }
-    #lightbox-close:hover {
-        transform: scale(1.2);
-    }
-    /* LEFT SIDE: image */
-    #lightbox-img-side {
-        flex: 1;                 /* Takes up most of the space */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        background-color: #08031A;
-        min-width: 0;
-    }
-    #lightbox-img {
-        max-width: 100%;
-        max-height: 85vh;
-        object-fit: contain;     /* Shows image in full, no cropping */
-        display: block;
-    }
-    /* RIGHT SIDE: description panel */
-    #lightbox-info-side {
-        width: 240px;            /* Fixed width description column */
-        min-width: 240px;
-        padding: 50px 22px 25px;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        overflow-y: auto;        /* Scrollable if description is very long */
-        border-left: 1px solid rgba(237, 100, 245, 0.3);
-    }
-    #lightbox-title {
-        color: #ED64F5;
-        font-size: 20px;
-        line-height: 1.3;
-    }
-    #lightbox-desc {
-        color: #d8b4fe;
-        font-size: 14px;
-        line-height: 1.7;
-    }
-    /* ===================== */
-    /* FOOTER                */
-    /* ===================== */
-    footer {
-        background-color: #ffffff;
-        width: 100%;
-        height: 40px;
-        padding: 10px;
-        text-align: center;
-        color: #13092D;
-        margin-top: auto;
-    }
-    /* ============================================= */
-    /* MOBILE ONLY                                   */
-    /* ============================================= */
-    @media only screen and (max-width: 800px) {
-        #navbar {
-            justify-content: flex-end;
-            padding: 0 15px;
-        }
-        #nav-menu { display: none; }
-        #burger-btn {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 28px;
-            height: 20px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            z-index: 1100;
-        }
-        #burger-btn span {
-            display: block;
-            width: 100%;
-            height: 3px;
-            background-color: #ED64F5;
-            border-radius: 3px;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-        #burger-btn.open span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
-        #burger-btn.open span:nth-child(2) { opacity: 0; }
-        #burger-btn.open span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
-        #mobile-dropdown {
-            display: block;
-            position: absolute;
-            top: 50px; right: 0;
-            width: 220px;
-            background-color: rgba(19, 9, 45, 0.97);
-            border-left: 2px solid #ED64F5;
-            border-bottom: 2px solid #ED64F5;
-            border-radius: 0 0 0 10px;
-            z-index: 1050;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.35s ease, padding 0.35s ease;
-        }
-        #mobile-dropdown.open {
-            max-height: 500px;
-            padding: 10px 0;
-        }
-        #mobile-dropdown ul {
-            list-style: none;
-            margin: 0; padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-        #mobile-dropdown li { width: 80%; display: flex; justify-content: center; }
-        #mobile-dropdown li a img { max-width: 100%; max-height: 30px; height: auto; margin: 0 auto; }
-        /* 1 column on phones (images stack in a single list) */
-        #masonry-gallery {
-            column-count: 1;
-        }
-        main {
-            padding: 25px 12px;
-        }
-        #gallery-title h1 {
-            font-size: 28px;
-        }
-        /* Lightbox stacks vertically on phones */
-        #lightbox-box {
-            width: 95vw;
-            flex-direction: column;
-            max-height: 92vh;
-        }
-        #lightbox-img-side {
-            max-height: 55vh;
-        }
-        #lightbox-info-side {
-            width: 100%;
-            min-width: unset;
-            border-left: none;
-            border-top: 1px solid rgba(237, 100, 245, 0.3);
-            padding: 15px;
-        }
-    }
-</style>
 </body>
 </html>

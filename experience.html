@@ -1,339 +1,651 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evgenia Shastina</title>
+    <title>Experience – Evgenia Shastina</title>
 </head>
 <body>
-    <div id="container">
-    <!-- The header in the background -->
-    <div id="header"></div>
-    
-    <!-- The navbar wrapper that becomes sticky -->
+
+<div id="container">
+
+    <!-- NAVBAR -->
     <div id="headerArea">
         <nav id="navbar">
-            <!-- Burger button (only shows on mobile) -->
             <button id="burger-btn" aria-label="Open menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <!-- Desktop nav links (hidden on mobile) -->
             <ul id="nav-menu">
-                <li><a href="#"><img src="images/home_button.PNG" alt="Home"></a></li>
-                <li><a href="#"><img src="images/MyFilms_button.PNG" alt="My Films"></a></li>
-                <li><a href="#"><img src="images/Portfolio_button.PNG" alt="Portfolio"></a></li>
-                <li><a href="#"><img src="images/LifeDrawings_button.PNG" alt="Life Drawings"></a></li>
-                <li><a href="#"><img src="images/Experience_button.PNG" alt="Experience"></a></li>
-                <li><a href="#"><img src="images/Contact_button.PNG" alt="Contact"></a></li>
-            </ul>
-            <!-- Mobile dropdown menu (shown when burger is clicked) -->
+                    <li><a href="index.html"><img src="images/home_button.PNG"
+                        onmouseover="this.src='images/Home.GIF'" 
+                        onmouseout="this.src='images/home_button.PNG'" 
+                        alt="Home"></a></li>
+                    <li><a href="myFilms.html"><img src="images/MyFilms_button.PNG"
+                        onmouseover="this.src='images/MyFilms.GIF'" 
+                        onmouseout="this.src='images/MyFilms_button.PNG'" 
+                        alt="My Films"></a></li>
+                    <li><a href="portfolio.html"><img src="images/Portfolio_button.PNG"
+                        onmouseover="this.src='images/Portfolio.GIF'" 
+                        onmouseout="this.src='images/Portfolio_button.PNG'" 
+                        alt="Portfolio"></a></li>
+                    <li><a href="lifeDrawings.html"><img src="images/LifeDrawings_button.PNG" 
+                        onmouseover="this.src='images/LifeDrawings.GIF'" 
+                        onmouseout="this.src='images/LifeDrawings_button.PNG'" 
+                        alt="Life Drawings"></a></li>
+                    <li><a href="experience.html"><img src="images/Experience_button.PNG" 
+                        onmouseover="this.src='images/Experience.GIF'" 
+                        onmouseout="this.src='images/Experience_button.PNG'" 
+                        alt="Experience"></a></li>
+                    <li><a href="contact.html"><img src="images/Contact_button.PNG"
+                        onmouseover="this.src='images/Contact.GIF'" 
+                        onmouseout="this.src='images/Contact_button.PNG'" 
+                        alt="Contact"></a></li>
+                </ul>
             <div id="mobile-dropdown">
                 <ul>
-                    <li><a href="#"><img src="images/home_button.PNG" alt="Home"></a></li>
-                    <li><a href="#"><img src="images/MyFilms_button.PNG" alt="My Films"></a></li>
-                    <li><a href="#"><img src="images/Portfolio_button.PNG" alt="Portfolio"></a></li>
-                    <li><a href="#"><img src="images/LifeDrawings_button.PNG" alt="Life Drawings"></a></li>
-                    <li><a href="#"><img src="images/Experience_button.PNG" alt="Experience"></a></li>
-                    <li><a href="#"><img src="images/Contact_button.PNG" alt="Contact"></a></li>
-                </ul>
+                        <li><a href="index.html"><img src="images/home_button.PNG" alt="Home"></a></li>
+                        <li><a href="myFilms.html"><img src="images/MyFilms_button.PNG" alt="My Films"></a></li>
+                        <li><a href="portfolio.html"><img src="images/Portfolio_button.PNG" alt="Portfolio"></a></li>
+                        <li><a href="lifeDrawings.html"><img src="images/LifeDrawings_button.PNG" alt="Life Drawings"></a></li>
+                        <li><a href="experience.html"><img src="images/Experience_button.PNG" alt="Experience"></a></li>
+                        <li><a href="contact.html"><img src="images/Contact_button.PNG" alt="Contact"></a></li>
+                    </ul>
             </div>
         </nav>
     </div>
+
+    <main>
+        <img class="flower-img-top" 
+            src="images/flower_corner.png" >
+
+        <div id="page-title">
+            <h1>Experience</h1>
+            <p>My artistic journey</p>
+        </div>
+
+        <!--
+        ===========================================================
+        TIMELINE LAYOUT
+        ===========================================================
+        The #timeline div has a fixed height. All cards and arrows
+        are positioned absolutely inside it using percentages.
+
+        CARDS:
+          style="top: X%; left: Y%;"
+            top  = how far from the top of the timeline (0% = very top)
+            left = how far from the left edge of the screen (0%=left, 55%=right)
+
+        ARROWS:
+          Each .arrow-img sits between two cards.
+          style="top: X%; left: Y%; width: W%; transform: rotate(Zdeg) scaleX(-1)"
+            top/left  = where the arrow image starts
+            width     = how wide (and thus how long/stretched) the arrow is
+            rotate    = tilt the arrow image to match the curve direction
+            scaleX(-1) = flips the arrow image horizontally if needed
+
+        ADJUST these numbers until your arrow images line up perfectly
+        with your card positions.
+        ===========================================================
+        -->
+        <div id="timeline">
+
+            <!-- ============================= -->
+            <!-- CARD 1 – top right area       -->
+            <!-- ============================= -->
+            <div class="timeline-entry"
+                 style="top: 2%; left: 55%;"
+                 data-title="Sörängen Advertisment"
+                 data-year="2026"
+                 data-images="images/experience/advertisment.png ,images/experience/ad_inbook.png, images/experience/magazines.jpg"
+                 data-captions="">
+                <div class="entry-card">
+                    <span class="year-label">2026</span>
+                    <h2>School Advertisment</h2>
+                    <p>Commission to make an advertisment illustration for Sörängens Folkhögskola for Göteborg Film Festival magazine. This work was used as cover art and wall posters as well. </p>
+                     <p> Used: Oil paint, digital art (Photoshop).</p>
+                    <button class="learn-more-btn">Learn more</button>
+                </div>
+            </div>
+
+            <!--
+            ARROW 1: Long sweep from top of card 1 (right side) 
+            down-left across the full screen to card 2 (left side).
+            Upload your sweep arrow image as images/arrow_sweep.png
+            Adjust top/left/width/rotate until it connects the cards.
+            -->
+            <img class="arrow-img"
+                 src="images/arrow_sweep.png"
+                 alt=""
+                 style="top: 15%; left: 10%; width: 70%; transform: rotate(-5deg);">
+
+            <!-- ============================= -->
+            <!-- CARD 2 – middle left area     -->
+            <!-- ============================= -->
+            <div class="timeline-entry"
+                 style="top: 28%; left: 5%;"
+                 data-title="Book Animation"
+                 data-year="2026"
+                 data-images="images/experience/internship1.jpg,images/experience/internship2.jpg"
+                 data-captions="Character layout,Background script">
+                <div class="entry-card">
+                    <span class="year-label">2026</span>
+                    <h2>Book Animation</h2>
+                    <p>Commission to animate book trailer based on illustrations by Felicia Fortes</p>
+                    <p>Used: After Effects</p>
+                    <a href="https://www.instagram.com/p/DSZcEFJjIai/"><button class="learn-more-btn">Learn more</button> </a>
+                </div>
+            </div>
+
+            <!--
+            ARROW 2: Dash-style arrow from the side/bottom of card 2
+            curving right and down to card 3.
+            Upload your dash arrow image as images/arrow_dash.png
+            -->
+            <img class="arrow-img"
+                 src="images/arrow_dash.png"
+                 alt=""
+                 style="top: 40%; left: 13%; width: 30%; transform: rotate(6deg);">
+
+            <!-- ============================= -->
+            <!-- CARD 3 – lower right area     -->
+            <!-- ============================= -->
+            <div class="timeline-entry"
+                 style="top: 54%; left: 52%;"
+                 data-title="Graduate Short Film"
+                 data-year="2025"
+                 data-images="images/experience/grad1.jpg,images/experience/grad2.jpg"
+                 data-captions="Opening background,Final frame">
+                <div class="entry-card">
+                    <span class="year-label">2025-2026</span>
+                    <h2>Graduate Short Film</h2>
+                    <p>Directed and produced an 8-minute animated short. Handled all backgrounds, character design, storyboard and compositing.</p>
+                    <a href="myFilms.html"><button class="learn-more-btn">Learn more</button> </a>
+                </div>
+            </div>
+
+            <!--
+            ARROW 3: Curves back left and downward to card 4.
+            Upload as images/arrow_curve.png
+            -->
+            <img class="arrow-img"
+                 src="images/arrow_curve.png"
+                 alt=""
+                 style="top: 65%; left: 46%; width: 24%; transform: rotate(-3deg);">
+
+            <!-- ============================= -->
+            <!-- CARD 4 – bottom left area     -->
+            <!-- ============================= -->
+            <div class="timeline-entry"
+                 style="top: 78%; left: 5%;"
+                 data-title="BA Animation"
+                 data-year="2019"
+                 data-images="images/experience/uni1.jpg,images/experience/uni2.jpg"
+                 data-captions="Life drawing,Second year project">
+                <div class="entry-card">
+                    <span class="year-label">2023-2026</span>
+                    <h2>Sörängen Animation</h2>
+                    <p>Studied animation at Sörängens Folkhögskola. Focus on character animation and film studies.</p>
+                </div>
+            </div>
+            <img class="arrow-img"
+                 src="images/arrow_sweep.png"
+                 alt=""
+                 style="top: 85%; left: 20%; width: 50%; transform: rotate(6deg); transform: scaleX(-1);">
+
+            <!-- ============================= -->
+            <!-- CARD 4 – bottom left area     -->
+            <!-- ============================= -->
+            <div class="timeline-entry"
+                 style="top: 95%; left: 52%;"
+                 data-title="BA Animation"
+                 data-year="2019"
+                 data-images="images/experience/uni1.jpg,images/experience/uni2.jpg"
+                 data-captions="Life drawing,Second year project">
+                <div class="entry-card">
+                    <span class="year-label">2023-2024</span>
+                    <h2>CG Spectrum</h2>
+                    <p>Studied 2D animation at Cg Spectrum College of Digital Art & Animation.</p>
+                </div>
+            </div>
+            <img class="flower-img-bottom" 
+            src="images/flower_corner.png" >
+
+        </div><!-- end #timeline -->
+        
+
+    </main>
     
-    <div id="flex">
-        <!-- Main body -->
-        <main>
-            <h1>Evgenia Shastina</h1>
-            <h2>Animation Showreel</h2>
-            
-            <!-- Video Container -->
-            <div class="video-container">
-                <iframe 
-                    src="https://www.youtube-nocookie.com/embed/Uxsc5-4vQyE?si=sQcTFtBdv7Q4F2e9" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    referrerpolicy="strict-origin-when-cross-origin" 
-                    allowfullscreen>
-                </iframe>
-            </div>
-            
-            <!-- Video Info / Direct Link -->
-            <div class="video-info">
-                <p>If the video player doesn't display correctly, you can watch it directly here: 
-                    <br>
-                    <a href="https://youtu.be/Uxsc5-4vQyE?si=O2xMfCVcUNZhagKD" target="_blank" rel="noopener noreferrer">Watch on YouTube →</a>
-                </p>
-            </div>
-            <!-- Extra info container below video -->
-            <div id="sidebar">
-                <h2>Hi there!</h2>
-                <p>Welcome to my portfolio. Feel free to browse around!</p>
-            </div>
-        </main>
-    </div>
-    <footer id="footer">CC0 Public Domain, 2022</footer>
 </div>
-<!-- JavaScript -->
+
+<!-- GALLERY MODAL -->
+<div id="modal" class="hidden">
+    <div id="modal-backdrop"></div>
+    <div id="modal-box">
+        <button id="modal-close" aria-label="Close">✕</button>
+        <h2 id="modal-title"></h2>
+        <div id="modal-gallery"></div>
+    </div>
+</div>
+
 <script>
-    /* Header blur on scroll */
-    window.addEventListener('scroll', function() {
-        const scrollY = window.scrollY;
-        const header = document.getElementById('header');
-        const blurValue = Math.min(scrollY / 25, 10);
-        const scaleValue = 1 + (blurValue / 200);
-        header.style.setProperty('--blur-amount', blurValue + 'px');
-        header.style.setProperty('--scale-amount', scaleValue);
+/* ---- Burger menu ---- */
+const burgerBtn      = document.getElementById('burger-btn');
+const mobileDropdown = document.getElementById('mobile-dropdown');
+
+burgerBtn.addEventListener('click', function () {
+    burgerBtn.classList.toggle('open');
+    mobileDropdown.classList.toggle('open');
+});
+
+mobileDropdown.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+        burgerBtn.classList.remove('open');
+        mobileDropdown.classList.remove('open');
     });
-    /* Burger menu toggle */
-    const burgerBtn = document.getElementById('burger-btn');
-    const mobileDropdown = document.getElementById('mobile-dropdown');
-    burgerBtn.addEventListener('click', function() {
-        burgerBtn.classList.toggle('open');
-        mobileDropdown.classList.toggle('open');
-    });
-    /* Close dropdown when any link inside it is clicked */
-    mobileDropdown.querySelectorAll('a').forEach(function(link) {
-        link.addEventListener('click', function() {
-            burgerBtn.classList.remove('open');
-            mobileDropdown.classList.remove('open');
+});
+
+/* ---- Modal gallery ---- */
+const modal      = document.getElementById('modal');
+const modalTitle = document.getElementById('modal-title');
+const modalGal   = document.getElementById('modal-gallery');
+const modalClose = document.getElementById('modal-close');
+const modalBack  = document.getElementById('modal-backdrop');
+
+document.querySelectorAll('.learn-more-btn').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const entry    = btn.closest('.timeline-entry');
+        const title    = entry.getAttribute('data-title');
+        const imgPaths = entry.getAttribute('data-images').split(',');
+        const captions = entry.getAttribute('data-captions').split(',');
+
+        modalTitle.textContent = title;
+        modalGal.innerHTML = '';
+
+        imgPaths.forEach(function (src, i) {
+            const wrap = document.createElement('div');
+            wrap.className = 'modal-img-wrap';
+            const img = document.createElement('img');
+            img.src = src.trim();
+            img.alt = captions[i] ? captions[i].trim() : '';
+            const cap = document.createElement('p');
+            cap.className = 'modal-caption';
+            cap.textContent = captions[i] ? captions[i].trim() : '';
+            wrap.appendChild(img);
+            wrap.appendChild(cap);
+            modalGal.appendChild(wrap);
         });
+        modalGal.onwheel = null;
+/* Then add the new one directly as a property (always only one exists) */
+modalGal.onwheel = function (e) {
+    e.preventDefault();                        /* Stops the whole page from scrolling */
+    modalGal.scrollLeft += e.deltaY * 8;      /* Converts vertical wheel into horizontal scroll */
+                                               /* Increase 2 to scroll faster, decrease to scroll slower */
+};
+
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
     });
+});
+
+function closeModal() {
+    modal.classList.add('hidden');
+    modalGal.innerHTML = '';
+    document.body.style.overflow = '';
+}
+
+modalClose.addEventListener('click', closeModal);
+modalBack.addEventListener('click', closeModal);
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeModal();
+});
+
+/* Mouse wheel scrolls the gallery horizontally */
+
+
+/* ---- Scroll fade-in for cards ---- */
+const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+        if (e.isIntersecting) e.target.classList.add('visible');
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.timeline-entry').forEach(function (el) {
+    observer.observe(el);
+});
 </script>
-<!-- THIS IS THE CSS -->
+
 <style>
-    :root {
-        --header-image: url('images/header.PNG');
-        --body-bg-image: url('https://sadhost.neocities.org/images/tiles/purplesky.gif');
-        --content: #43256E;
-    }
-    @font-face {
-        font-family: Nunito;
-        src: url('fonts/MarseilleFreeRegular-rvKW8.otf');
-    }
-    @font-face {
-        font-family: Nunito;
-        src: url('fonts/MarseilleFreeRegular-rvKW8.otf');
-        font-weight: bold;
-    }
-    @font-face {
-        font-family: Nunito;
-        src: url('fonts/MarseilleFreeRegular-rvKW8.otf');
-        font-style: italic;
-    }
-    @font-face {
-        font-family: Nunito;
-        src: url('fonts/MarseilleFreeRegular-rvKW8.otf');
-        font-style: italic;
-        font-weight: bold;
-    }
+    @font-face { font-family: Nunito; src: url('https://sadhost.neocities.org/fonts/Nunito-Regular.ttf'); }
+    @font-face { font-family: Nunito; src: url('https://sadhost.neocities.org/fonts/Nunito-Bold.ttf'); font-weight: bold; }
+    @font-face { font-family: Nunito; src: url('https://sadhost.neocities.org/fonts/Nunito-Italic.ttf'); font-style: italic; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
         font-family: 'Nunito', sans-serif;
-        margin: 0;
-        background-color: #f7f5ff;
-        background-size: 65px;
-        color: #fceaff;
-        background-image: var(--body-bg-image);
+        background-color: #f6ffca;
+        color: #1a1a1a;
+        min-height: 100vh;
     }
-    * {
-        box-sizing: border-box;
-    }
+
     #container {
         width: 100%;
-        margin: 0;
         display: flex;
         flex-direction: column;
         min-height: 100vh;
     }
-    #container a {
-        color: #fee7ff;
-        font-weight: bold;
-    }
-    /* Fixed header behind all content */
-    #header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 250px;
-        z-index: 1;
-        overflow: hidden;
-    }
-    #header::before {
-        content: "";
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background-color: #ffffff;
-        background-image: var(--header-image);
-        background-size: cover;
-        background-position: center;
-        z-index: -1;
-        filter: blur(var(--blur-amount, 0px));
-        transform: scale(var(--scale-amount, 1));
-        will-change: filter, transform;
-    }
-    /* Sticky navbar area */
-    #headerArea {
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        margin-top: 250px;
-    }
-    /* Navbar container */
+
+    /* =========== */
+    /* NAVBAR      */
+    /* =========== */
+    #headerArea { position: sticky; top: 0; z-index: 1000; }
+
     #navbar {
         height: 50px;
-        background-color: #ffffff;
+        background: #f6ffca;
+        border-bottom: 1px solid #f6ffca;
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
         position: relative;
     }
-    /* Desktop: burger button hidden */
-    #burger-btn {
-        display: none;
-    }
-    /* Desktop: mobile dropdown hidden */
-    #mobile-dropdown {
-        display: none;
-    }
-    /* Desktop nav list: horizontal row */
+
+    #burger-btn { display: none; }
+    #mobile-dropdown { display: none; }
+
     #nav-menu {
         display: flex;
-        padding: 0;
-        margin: 0;
-        list-style-type: none;
+        list-style: none;
         justify-content: space-evenly;
         align-items: center;
-        width: 100%;
-        height: 100%;
+        width: 100%; height: 100%;
+        padding: 0; margin: 0;
     }
-    #nav-menu li {
-        padding-top: 0;
-    }
+
     #nav-menu li a {
-        color: #ffffff;
-        font-weight: 800;
         text-decoration: none;
+        color: #555;
+        font-size: 14px;
+        font-weight: bold;
+        transition: color 0.2s;
     }
-    #nav-menu li a:hover {
-        text-decoration: underline;
-    }
-    #nav-menu li a img {
-        display: block;
-        border: none;
-        max-height: 32px;
-        transition: transform 0.2s ease;
-    }
-    #nav-menu li a img:hover {
-        transform: scale(1.08);
-    }
-    /* Main content flex wrapper */
-    #flex {
-        display: flex;
-        position: relative;
-        z-index: 2;
-        flex: 1;
-    }
-    main {
-        background-color: #ffffff;
-        flex: 1;
-        padding: 40px 20px;
-        order: 2;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+
+    #nav-menu li a:hover { color: #000; }
+    #nav-menu li a img { display: block; max-height: 30px; border: none; }
+
+    /* =========== */
+    /* MAIN        */
+    /* =========== */
+    main { flex: 1; padding: 60px 0 80px; }
+
+    #page-title {
         text-align: center;
+        margin-bottom: 60px;
+        padding: 0 20px;
     }
-    footer {
+
+    #page-title h1 { font-size: 40px; color: #1a1a1a; letter-spacing: 2px; }
+    #page-title p  { color: #888; font-size: 14px; margin-top: 8px; }
+
+    /* =========================================================== */
+    /* TIMELINE – absolutely positioned canvas                      */
+    /* =========================================================== */
+    #timeline {
         position: relative;
-        z-index: 2;
-        background-color: #ffffff;
         width: 100%;
-        height: 40px;
-        padding: 10px;
-        text-align: center;
-        color: #13092D;
+
+        /*
+        HEIGHT OF THE TIMELINE CANVAS
+        ================================
+        Increase this number if your bottom card gets cut off.
+        The cards are positioned using percentages of this height,
+        so if you change this value, also re-check your card top% values.
+        */
+        height: 2200px;
     }
-    h1, h2, h3 {
-        color: #bf2b2b;
+
+    /* =========================================================== */
+    /* CARDS – absolutely positioned                                */
+    /* =========================================================== */
+    .timeline-entry {
+        position: absolute;
+        /*
+        WIDTH OF EACH CARD
+        ===================
+        Cards are 38% of the viewport wide. On very wide monitors
+        you might want to reduce this. On phones the layout switches
+        to a stacked flow (see mobile section below).
+        */
+        width: 38%;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.55s ease, transform 0.55s ease;
     }
-    h1 { font-size: 40px; }
-    strong { color: #fff8ff; }
-    .box {
-        background-color: #13092D;
-        border: 1px solid #bf2b2b;
-        padding: 10px;
-    }
-    .video-container {
+
+    .timeline-entry.visible { opacity: 1; transform: translateY(0); }
+
+    .entry-card {
         position: relative;
-        width: 95%;
-        max-width: 1000px;
-        aspect-ratio: 16 / 9;
-        margin: 20px auto;
-        border-radius: 12px;
-        overflow: hidden;
-        border: 2px solid #ED64F5;
-        box-shadow: 0 8px 30px rgba(237, 100, 245, 0.45);
-        background-color: #000;
+        padding: 30px 28px 24px;
+
+        /*
+        YOUR CUSTOM CARD TEXTURE IMAGE
+        ================================
+        Upload your hand-drawn card shape as a transparent PNG.
+        Change the filename below to match what you uploaded.
+        */
+        background-image: url('images/experience/Text_box.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        border: none;
+
+        transition: transform 0.3s ease;
     }
-    .video-container iframe {
+
+    .entry-card:hover { transform: translateY(-4px); }
+
+    .year-label {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: bold;
+        color: #476814;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+    }
+
+    .entry-card h2 { font-size: 17px; color: #1a1a1a; margin-bottom: 10px; line-height: 1.35; }
+    .entry-card p  { font-size: 13px; color: #444; line-height: 1.75; margin-bottom: 20px; }
+
+    .learn-more-btn {
+        background: none;
+        border: none;
+        border-bottom: 1.5px solid #1a1a1a;
+        color: #1a1a1a;
+        font-family: 'Nunito', sans-serif;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 2px 0;
+        cursor: pointer;
+        transition: opacity 0.2s;
+    }
+
+    .learn-more-btn:hover { opacity: 0.45; }
+
+    /* =========================================================== */
+    /* ARROW IMAGES – absolutely positioned                         */
+    /* =========================================================== */
+    .arrow-img {
+        position: absolute;
+        /*
+        pointer-events: none means clicking on the arrow image does
+        nothing — clicks pass straight through to cards behind it.
+        */
+        pointer-events: none;
+
+        /*
+        object-fit: contain keeps your arrow image's original shape
+        without distortion while still respecting the width you set.
+        */
+        object-fit: contain;
+        object-position: left top;
+
+        /*
+        TIPS FOR POSITIONING YOUR ARROWS
+        ==================================
+        top    : vertical position from the top of #timeline
+        left   : horizontal position from the left edge
+        width  : how wide the arrow image is drawn (controls scale)
+        transform: rotate(Xdeg)   – tilt the arrow
+        transform: scaleX(-1)     – flip it horizontally
+        transform: scaleY(-1)     – flip it vertically
+        You can combine transforms:
+          transform: rotate(10deg) scaleX(-1);
+
+        Start with a rough position, then fine-tune by small amounts.
+        */
+    }
+
+    /* =========== */
+    /* MODAL       */
+    /* =========== */
+    #modal {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw; height: 100vh;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #modal.hidden { display: none; }
+
+    #modal-backdrop {
         position: absolute;
         top: 0; left: 0;
         width: 100%; height: 100%;
+        background: rgba(0,0,0,0.45);
     }
-    .video-info {
-        background-color: #13092D;
-        border: 1px solid #ED64F5;
-        padding: 15px;
+
+    #modal-box {
+        position: relative;
+        z-index: 1;
+        width: 75vw;
+        max-width: 860px;
+        background: #f9ffedeb;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        padding: 40px 30px 28px;
+        box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    #modal-close {
+        position: absolute;
+        top: 14px; right: 18px;
+        background: none; border: none;
+        font-size: 20px; color: #888;
+        cursor: pointer; transition: color 0.2s;
+    }
+
+    #modal-close:hover { color: #000; }
+
+    #modal-title { font-size: 20px; color: #1a1a1a; }
+
+    #modal-hint { font-size: 11px; color: #aaa; letter-spacing: 0.5px; }
+
+    #modal-gallery {
+        display: flex;
+        flex-direction: row;
+        gap: 18px;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        padding-bottom: 8px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        cursor: grab;
+    }
+
+    #modal-gallery:active { cursor: grabbing; }
+    #modal-gallery::-webkit-scrollbar { height: 4px; }
+    #modal-gallery::-webkit-scrollbar-track { background: #f0f0f0; border-radius: 10px; }
+    #modal-gallery::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
+
+    .modal-img-wrap {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        width: max-content
+    }
+
+    .modal-img-wrap img {
+        width: auto; height: auto;
+        max-width: 600px;
+        max-height: 320px;
+        margin-top: auto;
+        margin-bottom: auto;
+        object-fit: cover;
         border-radius: 6px;
-        margin-top: 15px;
-        font-size: 0.9em;
-        line-height: 1.6;
-        width: 95%;
-        max-width: 1000px;
+        border: 1px solid #e8e8e8;
     }
-    .video-info a {
-        display: inline-block;
-        margin-top: 5px;
+
+    .modal-caption { font-size: 12px; color: #777; text-align: center; }
+
+    .flower-img-top {
+    position: absolute;
+    transform: rotate(180deg);
+    z-index: -1;
+    top: 10;
+    left: 0;
+    margin-top: auto;
+    margin-left: auto;
+    width: auto;
+    max-width: 91%;  
+    opacity: 50%; 
     }
-    /* Extra info box below the video */
-    #sidebar {
-        width: 95%;
-        max-width: 1000px;
-        margin-top: 30px;
-        padding: 20px;
-        background-color: #241445;
-        border-radius: 8px;
-        text-align: left;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-        font-size: smaller;
+
+    .flower-img-bottom {
+    position: absolute;
+    z-index: -1;
+    bottom: -80px;
+    right: 0;
+    margin-top: auto;
+    margin-left: auto;
+    width: auto;
+    max-width: 65%; 
+    opacity: 50%; /* or whatever size you want */
+}
+
+    /* =========== */
+    /* FOOTER      */
+    /* =========== */
+    footer {
+        background: #f6ffca;
+        border-top: 1px solid #f6ffca;
+        width: 100%; height: 40px;
+        padding: 10px; text-align: center;
+        font-size: 12px; color: #aaa;
     }
-    #sidebar h2 {
-        margin-top: 0;
-    }
-    /* ============================================================ */
-    /* MOBILE ONLY - Everything below applies to phones only        */
-    /* ============================================================ */
+
+    /* ============================================= */
+    /* MOBILE – switch back to simple stacked layout */
+    /* ============================================= */
     @media only screen and (max-width: 800px) {
-        /* Smaller header on phones */
-        #header {
-            height: 150px;
-        }
-        #headerArea {
-            margin-top: 150px;
-        }
-        /* Navbar: align burger to the right */
-        #navbar {
-            height: 50px;
+    #navbar {
             justify-content: flex-end;
             padding: 0 15px;
         }
-        /* Hide desktop nav links on mobile */
-        #nav-menu {
-            display: none;
-        }
-        /* Show and style the burger button */
+        #nav-menu { display: none; }
         #burger-btn {
             display: flex;
             flex-direction: column;
@@ -346,93 +658,87 @@
             padding: 0;
             z-index: 1100;
         }
-        /* The three burger lines */
         #burger-btn span {
             display: block;
             width: 100%;
             height: 3px;
-            background-color: #ff9956;
+            background-color: #bf2b2b;
             border-radius: 3px;
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
-        /* Burger animates into an X when open */
-        #burger-btn.open span:nth-child(1) {
-            transform: translateY(8.5px) rotate(45deg);
-        }
-        #burger-btn.open span:nth-child(2) {
-            opacity: 0;
-        }
-        #burger-btn.open span:nth-child(3) {
-            transform: translateY(-8.5px) rotate(-45deg);
-        }
-        /* Dropdown panel: slides down from navbar */
+        #burger-btn.open span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
+        #burger-btn.open span:nth-child(2) { opacity: 0; }
+        #burger-btn.open span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
         #mobile-dropdown {
             display: block;
             position: absolute;
-            top: 50px;
-            right: 0;
+            top: 50px; right: 0;
             width: 220px;
-            background-color: rgba(255, 255, 255, 0.97);
-            border-left: 2px solid #ffffff;
-            border-bottom: 2px solid #ffffff;
+            background-color: rgba(245, 243, 239, 0.696);
+            border-left: 2px solid #f0eae1;
+            border-bottom: 2px solid #f0eae1;
             border-radius: 0 0 0 10px;
             z-index: 1050;
-            /* Collapsed by default */
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.35s ease, padding 0.35s ease;
         }
-        /* Expanded when .open class is added by JavaScript */
         #mobile-dropdown.open {
             max-height: 500px;
             padding: 10px 0;
         }
-        /* Dropdown list */
         #mobile-dropdown ul {
             list-style: none;
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 15px;
         }
-        #mobile-dropdown li {
-            width: 80%;
-            display: flex;
-            justify-content: center;
-        }
-        #mobile-dropdown li a img {
-            max-width: 100%;
-            max-height: 30px;
-            height: auto;
-            margin: 0 auto;
-            transition: transform 0.2s ease;
-        }
-        #mobile-dropdown li a img:hover {
-            transform: scale(1.08);
-        }
-        /* Stack layout vertically */
-        #flex {
-            flex-direction: column;
-        }
-        main {
-            padding: 20px 10px;
-        }
-        .video-container {
-            width: 100%;
-            border-radius: 8px;
-        }
-        .video-info {
-            width: 100%;
-        }
-        #sidebar {
-            width: 100%;
-        }
-        footer {
-            margin-top: auto;
-        }
+        #mobile-dropdown li { width: 80%; display: flex; justify-content: center; }
+        #mobile-dropdown li a img { max-width: 100%; max-height: 30px; height: auto; margin: 0 auto; }
+        .flower-img-top {
+    position: absolute;
+    transform: rotate(180deg);
+    z-index: -1;
+    top: 7%;
+    left: 0;
+    margin-top: auto;
+    margin-left: auto;
+    width: auto;
+    max-width: 91%;  
+    opacity: 50%; 
     }
+
+        /*
+        On mobile, switch #timeline from absolute positioning
+        back to a normal vertical flow so cards stack cleanly.
+        */
+        #timeline {
+            height: auto !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            padding: 20px;
+        }
+
+        /* Reset absolute positioning for each card on mobile */
+        .timeline-entry {
+            position: static !important;
+            width: 92% !important;
+            opacity: 1 !important;
+            transform: none !important;
+        }
+
+        /* Hide arrow images on mobile — they don't make sense in a stacked layout */
+        .arrow-img { display: none; }
+
+        #modal-box { width: 94vw; padding: 36px 14px 18px; }
+        .modal-img-wrap { width: max-content; }
+        .modal-img-wrap img { width: auto; height: auto; max-width: 350px; margin-top: auto; margin-bottom: auto;}
+        }
 </style>
+
 </body>
 </html>

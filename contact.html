@@ -17,6 +17,8 @@
 
         #container {
             display: flex;
+            width: 100%;
+            height: auto;
             flex-direction: column;
             min-height: 100vh;
         }
@@ -32,7 +34,7 @@
 
         #navbar {
             height: 50px;
-            background-color: #ffffff;
+            background-color: #989aff;
             width: 100%;
             display: flex;
             align-items: center;
@@ -79,6 +81,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            background-color: #989aff;
         }
 
         #img-responsive {
@@ -113,7 +116,7 @@
             align-items: center;
             gap: 20px;
             padding: 20px;
-            background-color: #ffffff;
+            background-color: #f0eae1;
             border-radius: 8px;
             transition: all 0.3s ease;
         }
@@ -153,11 +156,33 @@
             color: #ff9956;
         }
 
+        .flower-img-bottom {
+            position: absolute;
+             z-index: 0;
+             bottom: 0;
+             right: 0;
+             margin-top: auto;
+             margin-left: auto;
+             width: auto;
+             max-width: 48%; 
+            }
+            .flower-img-bottom-left {
+            position: absolute;
+            transform: scaleX(-1);
+             z-index: 0;
+             bottom: 0;
+             left: 0;
+             margin-top: auto;
+             margin-left: auto;
+             width: auto;
+             max-width: 48%; 
+            }
+
         /* ======================== */
         /* FOOTER                  */
         /* ======================== */
         #footer {
-            background-color: #ffffff;
+            background-color: #989aff;
             width: 100%;
             height: 40px;
             padding: 10px;
@@ -224,8 +249,8 @@
                 right: 0;
                 width: 220px;
                 background-color: rgba(255, 255, 255, 0.97);
-                border-left: 2px solid #ffffff;
-                border-bottom: 2px solid #ffffff;
+                border-left: 2px solid #989aff;
+                border-bottom: 2px solid #989aff;
                 border-radius: 0 0 0 10px;
                 z-index: 1050;
                 max-height: 0;
@@ -287,6 +312,27 @@
             #body li p {
                 font-size: 20px;
             }
+            .flower-img-bottom {
+            display: none;
+            }
+            .flower-img-bottom-left {
+            position: absolute;
+            transform: scaleX(-1);
+             z-index: 0;
+             top: -5;
+             margin-bottom: auto;
+             left: 0;
+             margin-right: auto;
+             width: auto;
+             max-width: 100%;
+            }
+            html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+    background: #989aff;
+}
+            
         }
     </style>
 </head>
@@ -348,7 +394,7 @@
         <main>
             <!-- Contact Title -->
             <div id="img-responsive">
-                <img src="images/ContactMe.gif" alt="contact-me">
+                <img src="images/ContactMeYellow.gif" alt="contact-me">
             </div>
 
             <!-- Contact List -->
@@ -374,6 +420,11 @@
                     <p>@shastina_mov</p>
                 </li>
             </ul>
+            <img class="flower-img-bottom-left" 
+            src="images/flower_corner.png" >
+            <img class="flower-img-bottom" 
+            src="images/flower_corner.png" >
+            
         </main>
 
         <!-- Footer -->
