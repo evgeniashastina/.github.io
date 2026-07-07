@@ -8,33 +8,48 @@
 <body>
 <div id="container">
     <!-- NAVBAR (same as index.html, no header above it) -->
-    <div id="headerArea">
+     <div id="headerArea">
         <nav id="navbar">
-            <!-- Burger button (mobile only) -->
             <button id="burger-btn" aria-label="Open menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <!-- Desktop nav links -->
             <ul id="nav-menu">
-                <li><a href="index.html"><img src="images/home_button.PNG" alt="Home"></a></li>
-                <li><a href="myFilms.html"><img src="images/MyFilms_button.PNG" alt="My Films"></a></li>
-                <li><a href="portfolio.html"><img src="images/Portfolio_button.PNG" alt="Portfolio"></a></li>
-                <li><a href="lifeDrawings.html"><img src="images/LifeDrawings_button.PNG" alt="Life Drawings"></a></li>
-                <li><a href="experience.html"><img src="images/Experience_button.PNG" alt="Experience"></a></li>
-                <li><a href="contact.html"><img src="images/Contact_button.PNG" alt="Contact"></a></li>
-            </ul>
-            <!-- Mobile dropdown -->
+                    <li><a href="index.html"><img src="images/home_button.PNG"
+                        onmouseover="this.src='images/Home.GIF'" 
+                        onmouseout="this.src='images/home_button.PNG'" 
+                        alt="Home"></a></li>
+                    <li><a href="myFilms.html"><img src="images/MyFilms_button.PNG"
+                        onmouseover="this.src='images/MyFilms.GIF'" 
+                        onmouseout="this.src='images/MyFilms_button.PNG'" 
+                        alt="My Films"></a></li>
+                    <li><a href="portfolio.html"><img src="images/Portfolio_button.PNG"
+                        onmouseover="this.src='images/Portfolio.GIF'" 
+                        onmouseout="this.src='images/Portfolio_button.PNG'" 
+                        alt="Portfolio"></a></li>
+                    <li><a href="lifeDrawings.html"><img src="images/LifeDrawings_button.PNG" 
+                        onmouseover="this.src='images/LifeDrawings.GIF'" 
+                        onmouseout="this.src='images/LifeDrawings_button.PNG'" 
+                        alt="Life Drawings"></a></li>
+                    <li><a href="experience.html"><img src="images/Experience_button.PNG" 
+                        onmouseover="this.src='images/Experience.GIF'" 
+                        onmouseout="this.src='images/Experience_button.PNG'" 
+                        alt="Experience"></a></li>
+                    <li><a href="contact.html"><img src="images/Contact_button.PNG"
+                        onmouseover="this.src='images/Contact.GIF'" 
+                        onmouseout="this.src='images/Contact_button.PNG'" 
+                        alt="Contact"></a></li>
+                </ul>
             <div id="mobile-dropdown">
                 <ul>
-                    <li><a href="index.html"><img src="images/home_button.PNG" alt="Home"></a></li>
-                    <li><a href="myFilms.html"><img src="images/MyFilms_button.PNG" alt="My Films"></a></li>
-                    <li><a href="portfolio.html"><img src="images/Portfolio_button.PNG" alt="Portfolio"></a></li>
-                    <li><a href="lifeDrawings.html"><img src="images/LifeDrawings_button.PNG" alt="Life Drawings"></a></li>
-                    <li><a href="experience.html"><img src="images/Experience_button.PNG" alt="Experience"></a></li>
-                    <li><a href="contact.html"><img src="images/Contact_button.PNG" alt="Contact"></a></li>
-                </ul>
+                        <li><a href="index.html"><img src="images/home_button.PNG" alt="Home"></a></li>
+                        <li><a href="myFilms.html"><img src="images/MyFilms_button.PNG" alt="My Films"></a></li>
+                        <li><a href="portfolio.html"><img src="images/Portfolio_button.PNG" alt="Portfolio"></a></li>
+                        <li><a href="lifeDrawings.html"><img src="images/LifeDrawings_button.PNG" alt="Life Drawings"></a></li>
+                        <li><a href="experience.html"><img src="images/Experience_button.PNG" alt="Experience"></a></li>
+                        <li><a href="contact.html"><img src="images/Contact_button.PNG" alt="Contact"></a></li>
+                    </ul>
             </div>
         </nav>
     </div>
@@ -59,9 +74,9 @@
             </a>
             <!-- Card 2: Characters -->
             <a href="characters.html" class="gallery-card"
-               data-images="images/portfolio/characters1.jpg,images/portfolio/characters2.jpg,images/portfolio/characters3.jpg">
+               data-images="images/characters/K dev.png, images/characters/IVANA_KUPALA dev.png, images/characters/VIKA turnaround 1.png">
                 <div class="card-image-wrapper">
-                    <img class="card-img" src="images/portfolio/characters1.jpg" alt="Characters">
+                    <img class="card-img" src="images/characters/K dev.png" alt="Characters">
                     <div class="card-overlay">
                         <span>View Gallery →</span>
                     </div>
@@ -70,9 +85,9 @@
             </a>
             <!-- Card 3: Storyboards -->
             <a href="storyboards.html" class="gallery-card"
-               data-images="images/portfolio/storyboards1.jpg,images/portfolio/storyboards2.jpg,images/portfolio/storyboards3.jpg">
+               data-images="images/storyboard/Candle Girl thumbnail page 3.png">
                 <div class="card-image-wrapper">
-                    <img class="card-img" src="images/portfolio/storyboards1.jpg" alt="Storyboards">
+                    <img class="card-img" src="images/storyboard/Candle Girl thumbnail page 3.png" alt="Storyboards">
                     <div class="card-overlay">
                         <span>View Gallery →</span>
                     </div>
@@ -81,7 +96,7 @@
             </a>
             <!-- Card 4: Concept Art -->
             <a href="concept.html" class="gallery-card"
-               data-images="images/concept/concept3.png,  images/concept/Mood thumbnails (1).png,images/concept/Kupala concept 2.png">
+               data-images="images/concept/concept1.png, images/concept/concept3.png,  images/concept/Mood thumbnails (1).png,images/concept/Kupala concept 2.png">
                 <div class="card-image-wrapper">
                     <img class="card-img" src="images/concept/concept1.png" alt="Concept Art">
                     <div class="card-overlay">
@@ -92,9 +107,9 @@
             </a>
         <!-- Card 5: Other -->
             <a href="other.html" class="gallery-card"
-               data-images="images/portfolio/concept1.jpg,images/portfolio/concept2.jpg,images/portfolio/concept3.jpg">
+               data-images="images/other/Env1.png, images/other/Untitled_Artwork 6 (2).png, images/other/20250526_211022.jpg">
                 <div class="card-image-wrapper">
-                    <img class="card-img" src="images/portfolio/concept1.jpg" alt="Other">
+                    <img class="card-img" src="images/other/Env1.png" alt="Other">
                     <div class="card-overlay">
                         <span>View Gallery →</span>
                     </div>
@@ -103,7 +118,8 @@
             </a>
         </div><!-- end gallery-grid -->
     </main>
-    <footer id="footer">Evgenia Shastina, 2026</footer>
+    </div>
+    <footer id="footer">Evgenia Shastina, All Rights Reserved, 2026</footer>
 </div>
 <!-- JAVASCRIPT -->
 <script>
@@ -176,6 +192,11 @@
         font-style: italic;
         font-weight: bold;
     }
+    @font-face {
+        font-family: Footer;
+        src: url('fonts/Bigbelow-gw60p.otf');
+        font-weight: bold;
+    }
     * {
         box-sizing: border-box;
         margin: 0;
@@ -183,7 +204,7 @@
     }
     body {
         font-family: 'Nunito', sans-serif;
-        background-color: #ffffff;
+        background-color: #fbffe6ee;
         background-image: var(--body-bg-image);
         background-size: 65px;
         color: #ffffff;
@@ -206,7 +227,7 @@
     }
     #navbar {
         height: 50px;
-        background-color: #ffffff;
+        background-color: #fbffe6ee;
         width: 100%;
         display: flex;
         align-items: center;
@@ -345,13 +366,16 @@
     /* FOOTER                   */
     /* ======================== */
     footer {
-        background-color: #ffffff;
+        font-family: 'Footer';
+        background-color: #fbffe6ee;
         width: 100%;
         height: 40px;
         padding: 10px;
         text-align: center;
-        color: #13092D;
+        color: #bf612b;
+        opacity: 70%;
         margin-top: auto;
+        font-size: medium;
     }
     /* ============================================= */
     /* MOBILE ONLY                                   */
@@ -403,10 +427,7 @@
             top: 50px;
             right: 0;
             width: 220px;
-            background-color: rgba(255, 255, 255, 0.97);
-            border-left: 2px solid #ffffff;
-            border-bottom: 2px solid #ffffff;
-            border-radius: 0 0 0 10px;
+            background-color: rgba(255, 255, 255, 0.925);
             z-index: 1050;
             max-height: 0;
             overflow: hidden;

@@ -206,7 +206,7 @@
                 <div class="entry-card">
                     <span class="year-label">2023-2024</span>
                     <h2>CG Spectrum</h2>
-                    <p>Studied 2D animation at Cg Spectrum College of Digital Art & Animation.</p>
+                    <p>Studied two-D animation at Cg Spectrum College of Digital Art & Animation.</p>
                 </div>
             </div>
             <img class="flower-img-bottom" 
@@ -227,6 +227,8 @@
         <h2 id="modal-title"></h2>
         <div id="modal-gallery"></div>
     </div>
+    </div>
+    <footer id="footer">Evgenia Shastina, All Rights Reserved, 2026</footer>
 </div>
 
 <script>
@@ -318,9 +320,27 @@ document.querySelectorAll('.timeline-entry').forEach(function (el) {
 </script>
 
 <style>
-    @font-face { font-family: Nunito; src: url('https://sadhost.neocities.org/fonts/Nunito-Regular.ttf'); }
-    @font-face { font-family: Nunito; src: url('https://sadhost.neocities.org/fonts/Nunito-Bold.ttf'); font-weight: bold; }
-    @font-face { font-family: Nunito; src: url('https://sadhost.neocities.org/fonts/Nunito-Italic.ttf'); font-style: italic; }
+    @font-face {
+        font-family: Footer;
+        src: url('fonts/Bigbelow-gw60p.otf');
+        font-weight: bold;
+    }
+    @font-face {
+        font-family: Nunito;
+        src: url('fonts/MarseilleFreeRegular-rvKW8.otf');
+    }
+    @font-face {
+        font-family: Nunito;
+        src: url('fonts/MarseilleFreeRegular-rvKW8.otf');
+    }
+    @font-face {
+        font-family: Nunito;
+        src: url('fonts/MarseilleFreeRegular-rvKW8.otf');
+    }
+    @font-face {
+        font-family: Numbers;
+        src: url('fonts/Bigbelow-gw60p.otf');
+    }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -389,7 +409,7 @@ document.querySelectorAll('.timeline-entry').forEach(function (el) {
     }
 
     #page-title h1 { font-size: 40px; color: #1a1a1a; letter-spacing: 2px; }
-    #page-title p  { color: #888; font-size: 14px; margin-top: 8px; }
+    #page-title p  { color: #577007; font-size: 20px; margin-top: 8px; }
 
     /* =========================================================== */
     /* TIMELINE – absolutely positioned canvas                      */
@@ -450,6 +470,7 @@ document.querySelectorAll('.timeline-entry').forEach(function (el) {
     .entry-card:hover { transform: translateY(-4px); }
 
     .year-label {
+        font-family: 'Numbers';
         display: inline-block;
         font-size: 12px;
         font-weight: bold;
@@ -630,11 +651,13 @@ document.querySelectorAll('.timeline-entry').forEach(function (el) {
     /* FOOTER      */
     /* =========== */
     footer {
+        font-family: 'Footer';
         background: #f6ffca;
         border-top: 1px solid #f6ffca;
         width: 100%; height: 40px;
         padding: 10px; text-align: center;
-        font-size: 12px; color: #aaa;
+        font-size: medium;
+        color: #596705;
     }
 
     /* ============================================= */
@@ -675,9 +698,6 @@ document.querySelectorAll('.timeline-entry').forEach(function (el) {
             top: 50px; right: 0;
             width: 220px;
             background-color: rgba(245, 243, 239, 0.696);
-            border-left: 2px solid #f0eae1;
-            border-bottom: 2px solid #f0eae1;
-            border-radius: 0 0 0 10px;
             z-index: 1050;
             max-height: 0;
             overflow: hidden;
@@ -737,6 +757,10 @@ document.querySelectorAll('.timeline-entry').forEach(function (el) {
         #modal-box { width: 94vw; padding: 36px 14px 18px; }
         .modal-img-wrap { width: max-content; }
         .modal-img-wrap img { width: auto; height: auto; max-width: 350px; margin-top: auto; margin-bottom: auto;}
+        }
+        footer {
+            font-size: 80%;
+            margin-top: auto;
         }
 </style>
 

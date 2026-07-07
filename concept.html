@@ -9,10 +9,19 @@
         /* ======================== */
         /* GENERAL STYLES           */
         /* ======================== */
+        @font-face {
+        font-family: Nunito;
+        src: url('fonts/MarseilleFreeRegular-rvKW8.otf');
+    }
+        @font-face {
+        font-family: Footer;
+        src: url('fonts/Bigbelow-gw60p.otf');
+        font-weight: bold;
+    }
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            background: #f0f0f0; /* Clean, minimalistic off-white */
+            background: #fbffe6ee; /* Clean, minimalistic off-white */
             color: #333;
         }
 
@@ -34,7 +43,7 @@
         
         #navbar {
             height: 50px;
-            background-color: #f0f0f0;
+            background-color: #fbffe6ee;
             width: 100%;
             display: flex;
             align-items: center;
@@ -76,6 +85,15 @@
             width: 100%;
             box-sizing: border-box;
         }
+        .page-title {
+            font-family: 'Nunito';
+            text-align: center;
+            font-size: 36px;
+            margin-top: 0;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+            color: #4a4a4a;
+        }
 
         .list-block {
             display: flex;
@@ -110,6 +128,7 @@
 
         /* --- Right Side: Text (WITH HAND DRAWN BACKGROUND) --- */
         .block-text {
+            font-family: 'Nunito';
             flex: 1; 
             background-image: url('images/experience/Text_box.png'); /* The hand drawn outline image */
             background-size: 100% 100%; /* Stretches exactly to the text size */
@@ -119,6 +138,7 @@
         }
 
         .block-text h2 {
+            font-family: 'Nunito';
             font-size: 32px;
             margin-top: 0;
             margin-bottom: 20px;
@@ -127,6 +147,7 @@
         }
 
         .block-text p {
+            font-family: 'Nunito';
             font-size: 17px;
             line-height: 1.8;
             color: #555;
@@ -185,6 +206,18 @@
             transition: transform 0.2s ease;
         }
         #lightbox-close:hover { transform: scale(1.2); }
+        footer {
+        font-family: 'Footer';
+        position: relative;
+        z-index: 2;
+        background-color: #fbffe6ee;
+        width: 100%;
+        height: 40px;
+        padding: 10px;
+        text-align: center;
+        color: #ff9956;
+        font-size: medium;
+    }
 
         /* ============================================= */
         /* MOBILE ONLY STYLES                            */
@@ -251,8 +284,7 @@
             #burger-btn.open span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
             #mobile-dropdown {
                 display: block; position: absolute; top: 50px; right: 0; width: 220px;
-                background-color: rgba(253, 253, 253, 0.98); border-left: 2px solid #e0e0e0;
-                border-bottom: 2px solid #e0e0e0; border-radius: 0 0 0 10px; z-index: 1050;
+                background-color: rgba(253, 253, 253, 0.98);  z-index: 1050;
                 max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease;
                 box-shadow: -4px 4px 15px rgba(0,0,0,0.1);
             }
@@ -260,6 +292,10 @@
             #mobile-dropdown ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 15px; }
             #mobile-dropdown li { width: 80%; display: flex; justify-content: center; }
             #mobile-dropdown li a img { max-width: 100%; max-height: 30px; height: auto; margin: 0 auto; }
+            footer {
+            font-size: 80%;
+            margin-top: auto;
+        }
         }
     </style>
 </head>
@@ -295,6 +331,7 @@
 
     <!-- MAIN CONTENT -->
     <main>
+        <h1 class="page-title">Concept Art</h1>
 
         <!-- BLOCK 1 (Example with ONE image) -->
         <section class="list-block">
@@ -303,9 +340,9 @@
                 <img src="images/concept/colorscheme thumbnails.png" alt="Artwork" class="gallery-img">
             </div>
             <div class="block-text">
-                <h2>Single Image Block</h2>
-                <p>Because you only put one image in this block, the code automatically makes it take up the entire left side so it looks perfectly balanced!</p>
-                <p>This is a great layout for highlighting one really important piece of artwork or a single movie poster.</p>
+                <h2>Homesick - Personal project</h2>
+                <p>Style frame; </p>
+                <p>Color-coded timeline thumbnails.</p>
             </div>
         </section>
         
@@ -314,9 +351,8 @@
                 <img src="images/concept/Untitled_Artwork (30).png" alt="Artwork" class="gallery-img">
             </div>
             <div class="block-text">
-                <h2>Three Images Block</h2>
-                <p>Three images shrink slightly to fit perfectly next to each other in an elegant row.</p>
-                <p>If you view this block on a phone, the images will automatically convert into a swipeable horizontal gallery so they don't get too skinny!</p>
+                <h2>Open House advertisment - Group project</h2>
+                <p>Color and style exploration for a backround.</p>
             </div>
         </section>
 
@@ -328,9 +364,8 @@
                 <img src="images/concept/concept3.png" alt="Artwork" class="gallery-img">
             </div>
             <div class="block-text">
-                <h2>Two Images Block</h2>
-                <p>Here you have two images. The code evenly splits the left side right down the middle so they both look identically sized.</p>
-                <p>Clicking on either image will open the popup window, and you can use the arrows to easily click back and forth between these specific two images!</p>
+                <h2>I Insist - Group project</h2>
+                <p>Early stage development; Rough concept art.</p>
             </div>
         </section>
 
@@ -342,13 +377,15 @@
                 <img src="images/concept/Kupala Concept1.png" alt="Artwork" class="gallery-img">
             </div>
             <div class="block-text">
-                <h2>Three Images Block</h2>
-                <p>Three images shrink slightly to fit perfectly next to each other in an elegant row.</p>
-                <p>If you view this block on a phone, the images will automatically convert into a swipeable horizontal gallery so they don't get too skinny!</p>
+                <h2>Kupala Night - Personal project</h2>
+                <p>Color-coded thumbnails (three acts);</p>
+                <p>Concept art sketches.</p>
             </div>
         </section>
         
     </main>
+    </div>
+    <footer id="footer">Evgenia Shastina, All Rights Reserved, 2026</footer>
 </div>
 
 <!-- ========================================== -->

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -83,15 +84,21 @@
                     <a href="https://youtu.be/Uxsc5-4vQyE?si=O2xMfCVcUNZhagKD" target="_blank" rel="noopener noreferrer">Watch on YouTube →</a>
                 </p>
             </div>
-            <!-- Extra info container below video -->
-            <div id="sidebar">
-                <h2>Hi there!</h2>
-                <p>Welcome to my portfolio. Feel free to browse around!</p>
+            
+            <!-- GIF belt area -->
+            <div id="gif-belt">
+                <!-- Replace the src placeholders below with your actual GIF paths -->
+                <img src="images/kazuha.gif" alt="GIF 1">
+                <img src="images/Walk_cycle_1_TC.gif" alt="GIF 2">
+                <img src="images/space_line_Zhenya_New_Version_TC.gif" alt="GIF 3">
+                <img src="images/Water_splash_Zhenya_TC.gif" alt="GIF 4">
+                <img src="images/Dust_effect_Zhenya_TC.gif" alt="GIF 5">
             </div>
         </main>
     </div>
-    <footer id="footer">CC0 Public Domain, 2022</footer>
+    <footer id="footer">Evgenia Shastina, All Rights Reserved, 2026</footer>
 </div>
+
 <!-- JavaScript -->
 <script>
     /* Header blur on scroll */
@@ -118,11 +125,12 @@
         });
     });
 </script>
+
 <!-- THIS IS THE CSS -->
 <style>
     :root {
         --header-image: url('images/header.PNG');
-        --content: #43256E;
+        --content: #ffffff;
     }
     @font-face {
         font-family: Nunito;
@@ -130,27 +138,20 @@
     }
     @font-face {
         font-family: Nunito;
-        src: url('fonts/MarseilleFreeRegular-rvKW8.otf');
+        src: url('fonts/Bigbelow-gw60p.otf');
         font-weight: bold;
     }
     @font-face {
-        font-family: Nunito;
-        src: url('fonts/MarseilleFreeRegular-rvKW8.otf');
-        font-style: italic;
-    }
-    @font-face {
-        font-family: Nunito;
-        src: url('fonts/MarseilleFreeRegular-rvKW8.otf');
-        font-style: italic;
+        font-family: Footer;
+        src: url('fonts/Bigbelow-gw60p.otf');
         font-weight: bold;
     }
     body {
         font-family: 'Nunito', sans-serif;
         margin: 0;
-        background-color: #f7f5ff;
+        background-color: #fff4e6e7;
         background-size: 65px;
-        color: #fceaff;
-        background-image: var(--body-bg-image);
+        color: #701212;
     }
     * {
         box-sizing: border-box;
@@ -163,7 +164,7 @@
         min-height: 100vh;
     }
     #container a {
-        color: #fee7ff;
+        color: #970a0a;
         font-weight: bold;
     }
     /* Fixed header behind all content */
@@ -199,7 +200,7 @@
     /* Navbar container */
     #navbar {
         height: 50px;
-        background-color: #ffffff;
+        background-color: #fffbe6;
         width: 100%;
         display: flex;
         align-items: center;
@@ -254,7 +255,7 @@
         flex: 1;
     }
     main {
-        background-color: #ffffff;
+        background-color: #fffbe6;
         flex: 1;
         padding: 40px 20px;
         order: 2;
@@ -264,22 +265,23 @@
         text-align: center;
     }
     footer {
+        font-family: 'Footer';
         position: relative;
         z-index: 2;
-        background-color: #ffffff;
+        background-color: #fffbe6;
         width: 100%;
         height: 40px;
         padding: 10px;
         text-align: center;
-        color: #13092D;
+        color: #ff9956;
     }
     h1, h2, h3 {
         color: #bf2b2b;
     }
     h1 { font-size: 40px; }
-    strong { color: #fff8ff; }
+    strong { color: #523852; }
     .box {
-        background-color: #13092D;
+        background-color: #ff5151;
         border: 1px solid #bf2b2b;
         padding: 10px;
     }
@@ -300,45 +302,64 @@
         width: 100%; height: 100%;
     }
     .video-info {
-        background-color: #13092D;
-        border: 1px solid #ED64F5;
-        padding: 15px;
-        border-radius: 6px;
         margin-top: 15px;
         font-size: 0.9em;
+        color: #000;
         line-height: 1.6;
         width: 95%;
         max-width: 1000px;
+        background-image: url('images/experience/Text_box.png'); /* The hand drawn outline image */
+            background-size: 70% 70%; /* Stretches exactly to the text size */
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 50px 40px; /* Space inside the box so text doesn't touch the drawn borders */
     }
-    .video-info a {
-        display: inline-block;
-        margin-top: 5px;
+    .video-info a,
+.video-info a:visited,
+.video-info a:hover,
+.video-info a:active {
+    color: #000;
+    text-decoration: none; /* optional */
+    font-weight: bold;
+}
+    
+    /* GIF belt below the video */
+    #gif-belt {
+        width: calc(100% + 20px); /* Expands out of the main 20px padding to touch screen edges */
+        margin-top: 40px;
+        gap: 10px;
+        padding: 0 15px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        scrollbar-width: none; /* Hide scrollbar for Firefox */
+        -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
     }
-    /* Extra info box below the video */
-    #sidebar {
-        width: 95%;
-        max-width: 1000px;
-        margin-top: 30px;
-        padding: 20px;
-        background-color: #241445;
-        border-radius: 8px;
-        text-align: left;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-        font-size: smaller;
+    #gif-belt::-webkit-scrollbar {
+        display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
     }
-    #sidebar h2 {
-        margin-top: 0;
+    #gif-belt img {
+        height: 160px; /* Adjust this height as needed to make the belt larger or smaller */
+        width: auto;
+        flex-shrink: 0;
+        margin-left: auto;
+        margin-right: auto;
     }
+
     /* ============================================================ */
     /* MOBILE ONLY - Everything below applies to phones only        */
     /* ============================================================ */
     @media only screen and (max-width: 800px) {
         /* Smaller header on phones */
+        main { padding: 40px 20px; }
         #header {
             height: 150px;
+            overflow:hidden;
         }
         #headerArea {
-            margin-top: 150px;
+            margin-top: 149px;
         }
         /* Navbar: align burger to the right */
         #navbar {
@@ -390,9 +411,6 @@
             right: 0;
             width: 220px;
             background-color: rgba(255, 255, 255, 0.97);
-            border-left: 2px solid #ffffff;
-            border-bottom: 2px solid #ffffff;
-            border-radius: 0 0 0 10px;
             z-index: 1050;
             /* Collapsed by default */
             max-height: 0;
@@ -440,13 +458,22 @@
             width: 100%;
             border-radius: 8px;
         }
-        .video-info {
-            width: 100%;
+        .video-info{
+    background-size: 100% 100%;
+    padding: 35px 22px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+        
+        #gif-belt {
+            width: calc(100% + 20px); /* Expands out of the main 10px padding */
         }
-        #sidebar {
-            width: 100%;
+        #gif-belt img {
+            height: 120px; /* Slightly smaller height for mobile screens */
         }
+        
         footer {
+            font-size: 80%;
             margin-top: auto;
         }
     }
